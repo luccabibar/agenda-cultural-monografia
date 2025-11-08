@@ -1,0 +1,540 @@
+% --------------------------------------------------------
+% DEFINIÇÕES DO DOCUMENTO
+% --------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em verso e anverso. Oposto a twoside
+	a4paper,			% tamanho do papel.
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+]{moderncv}
+
+
+% --------------------------------------------------------
+% PACOTES
+% --------------------------------------------------------
+\usepackage{cmap}				% Mapear caracteres especiais no PDF
+\usepackage[table,xcdraw]{xcolor}
+%\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage{helvet}			    % Usa a fonte Helvetica (Arial) 
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{xcolor}				% Controle das cores    
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{lipsum}				% para geração de dummy text
+\usepackage{listings}
+\usepackage{amsmath}
+
+\let\printglossary\relax
+\let\theglossary\relax
+\let\endtheglossary\relax
+\usepackage{lib/update-abntex}
+
+\usepackage[brazilian,hyperpageref]{}	 % Paginas com as citações na bibl
+\usepackage{microtype} 
+
+\usepackage{silence}
+%Disable all warnings issued by latex starting with "You have..."
+\WarningFilter{latex}{You have requested package}
+\usepackage[alf, abnt-etal-list=0]{lib/abntex2cite}	% Citações padrão ABNT
+\usepackage[br]{lib/nicealgo}       % Pacote para criação de algoritmos
+\usepackage{lib/customizacoes}      % Pacote de customizações do abntex2
+
+\usepackage{listings}
+\usepackage[normalem]{ulem} % Strikethrough package
+
+\usepackage[]{pdfpages} % Anexo de PDFS (Ficha Catalográfica)
+
+\usepackage{makecell} % Formatavao de tabelas
+% \usepackage{hyperref} % referencia
+% \usepackage{biblatex} % bibliografia (citetitle)
+
+% definicoes adicionais para nameref
+\newcommand{\lcnameref}[1]{%
+\bgroup
+\let\nmu\MakeLowercase
+\nameref{#1}\egroup}
+\newcommand{\fcnameref}[1]{%
+\bgroup
+\def\nmu{\let\nmu\MakeLowercase}%
+\nameref{#1}\egroup}
+
+\newcommand{\nmu}{}
+
+
+% --------------------------------------------------------
+% CONFIGURAÇÕES DE PACOTES
+% --------------------------------------------------------
+
+% Configurações do pacote listing
+\renewcommand{\lstlistingname}{Código} %Mudança no caption do listing para Código
+\renewcommand{\lstlistlistingname}{Lista de códigos} %Mudança no caption da lista de listings.
+
+% Contagem de códigos sem incluir o número do capítulo
+\usepackage{chngcntr}
+\AtBeginDocument{\counterwithout{lstlisting}{chapter}}
+
+
+% Configurações do pacote backref
+\renewcommand{\familydefault}{\sfdefault}
+% Usado sem a opção hyperpageref de backref
+% \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+% \renewcommand{\backref}{}
+% Define os textos da citação
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		Nenhuma citação no texto.%
+% 	\or
+% 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+% 	\fi}%
+
+% --------------------------------------------------------
+% INFORMAÇÕES DO ESTILO DE CÓDIGO FONTE
+% --------------------------------------------------------
+
+% Color definitions
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+% Definition of Style of Code
+\lstdefinestyle{style_code}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{
+    language=Python,
+    style=style_code, 
+    inputencoding=utf8,
+    extendedchars = true,
+    literate={á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+    {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+    {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+    {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+    {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+    {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+    {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+    {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+    {ã}{{\~a}}1 {ẽ}{{\~e}}1 {ĩ}{{\~i}}1 {õ}{{\~o}}1 {ũ}{{\~u}}1
+    {Ã}{{\~A}}1 {Ẽ}{{\~E}}1 {Ĩ}{{\~I}}1 {Õ}{{\~O}}1 {Ũ}{{\~U}}1
+    {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+    {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+    {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+    {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+    {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1 {¡}{{!`}}1 
+}
+
+% --------------------------------------------------------
+% INFORMAÇÕES DE DADOS PARA CAPA E FOLHA DE ROSTO
+% --------------------------------------------------------
+
+\titulo{Agenda Cultural Virtual
+“Qual a Boa” }
+\autor{Lucca Tadeu Silva Bibar}
+\local{Bauru}
+\data{Novembro/2024}
+\orientador{Profa. Dra. Simone das Graças Domingues Prado}
+%\coorientador{Prof. Dr. Seu Coorientador}
+\instituicao{%
+  Universidade Estadual Paulista ``Júlio de Mesquita Filho''
+  \par
+  Faculdade de Ciências
+  \par
+  Sistemas de Informação}
+\tipotrabalho{Trabalho de Conclusão de Curso}
+\preambulo{Entrega parcial do Trabalho de Conclusão de Curso do Curso de Sistemas de Informação da Universidade Estadual Paulista ``Júlio de Mesquita Filho'', Faculdade de Ciências, Campus Bauru.}
+
+
+% --------------------------------------------------------
+% CONFIGURAÇÕES PARA O PDF FINAL
+% --------------------------------------------------------
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        	% color of links to bibliography
+    	filecolor=magenta,      	% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+
+
+% ---
+% Posiciona figuras e tabelas no topo da página quando adicionadas sozinhas
+% em um página em branco. Ver https://github.com/abntex/abntex2/issues/170
+\makeatletter
+\setlength{\@fptop}{5pt} % Set distance from top of page to first float
+\makeatother
+% ---
+
+% ---
+% Possibilita criação de Quadros e Lista de quadros.
+% Ver https://github.com/abntex/abntex2/issues/176
+%
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\setfloatadjustment{quadro}{\centering}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+\setfloatlocations{quadro}{hbtp}
+% ---
+
+% --------------------------------------------------------
+% PACOTES ADICIONAIS (TABELAS E FIGURAS)
+% --------------------------------------------------------
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{graphicx}
+%ISSO FOI COMENTADO PRA SUPRIMIR UM ERRO, SE DER PROBLEMA SÓ COLOCAR DE VOLTA
+%\usepackage[table,xcdraw]{xcolor}
+
+% --------------------------------------------------------
+% ESPAÇAMENTOS ENTRE LINHAS E PARÁGRAFOS
+% --------------------------------------------------------
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}
+
+
+% --------------------------------------------------------
+% COMPILANDO O ÍNDICE
+% ---------------------------------------------------
+\makeindex
+% ---
+ 
+% ---
+% GLOSSARIO
+% ---
+% \makeglossaries
+% ---
+% Exemplo de configurações do glossairo
+% \renewcommand*{\glsseeformat}[3][\seename]{\textit{#1}  
+%  \glsseelist{#2}}
+% ---
+ 
+% --------------------------------------------------------
+% INÍCIO DO DOCUMENTO
+% --------------------------------------------------------
+
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+
+% --------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% --------------------------------------------------------
+%\pageref{LastPage} % Número de Páginas do TCC
+
+% Capa
+\imprimircapa
+
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% \imprimirfolhaderosto*
+\imprimirfolhaderosto
+
+% TODO: ficha bibliografica
+
+% Inserir a ficha bibliografica: https://www.biblioteca.unesp.br/ficha/
+% \begin{fichacatalografica}
+%     \includepdf[pages=1, scale=1.0, frame=false]{ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+% TODO: folha de aprovacao
+
+% Inserir folha de aprovação
+% \begin{folhadeaprovacao}
+% 	\begin{center}
+% 		{\ABNTEXchapterfont\large\imprimirautor}
+% 		\vspace*{\fill}\vspace*{\fill}
+% 		\begin{center}
+% 			\ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+% 		\end{center}
+% 		\vspace*{\fill}
+% 		\hspace{.45\textwidth}
+% 		\begin{minipage}{.5\textwidth}
+% 			\imprimirpreambulo
+% 		\end{minipage}%
+% 		\vspace*{\fill}
+% 	\end{center}
+% 	\center Banca Examinadora \\
+%     \vspace{\fill}
+% 	\textbf{\imprimirorientador} \\ Orientadora\\
+% 		Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
+% 		Faculdade de Ciências \\
+% 	Departamento de Ciência da Computação \\
+%     \vspace{\fill}
+% 	\textbf{Prof. AAAA BBB CCC} \\
+% 		Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
+% 		Faculdade de Ciências \\
+% 	Departamento de Ciência da Computação \\
+%     \vspace{\fill}
+% 	\textbf{Prof. AAAA BBB CCC} \\
+% 		Universidade Estadual Paulista "Júlio de Mesquita Filho"\\
+% 		Faculdade de Ciências \\
+% 	Departamento de Ciência da Computação \\
+%     \vspace{\fill}
+% 	\begin{center}
+% 		\vspace*{0.5cm}
+% 		\par
+% 		{Bauru, 14 de Novembro de 2024.} 
+% 		\vspace*{1cm}
+% 	\end{center}
+% \end{folhadeaprovacao}
+
+% TODO: Dedicatoria
+
+% Dedicatória
+% \begin{dedicatoria}
+% 	\vspace*{\fill}
+% 	\begin{flushright}
+% 		\textit{Este trabalho é dedicado à minha família que me incentivou a vir até aqui.} 
+% 	\end{flushright}
+% \end{dedicatoria}
+
+% TODO: Agradecimentos
+
+% Agradecimentos
+% \begin{agradecimentos}
+
+% Agradeço a Deus, à minha família e a todos os meus amigos que me acompanharam nessa jornada. Pai e mãe, obrigado sobretudo a vocês, que são a razão da minha vida. Apesar de todos os problemas e desafios, nunca deixaram de me amar e apoiar. A cada dia longe de vocês, aprendi a valorizar ainda mais a importância de tê-los juntos e ao meu lado. Em especial, gostaria de agradecer aos meus queridos padrinhos, Luís Alfredo e Maria Cecília, e à minha tia Dirce, que se fizeram presentes em minha vida durante todos os momentos. Vocês incentivaram esta jornada e hoje repousam ao lado de Deus. Agradeço também a minha avó, todos os meus tios e tias, meus irmãos e meus primos. 
+
+% Quero agradecer a todos que ajudaram na minha formação como humano e cidadão, e me incentivaram a crescer. Obrigado aos meus amigos, que aqui fiz e aqueles que vieram comigo. Devo muito por todo o apoio, carinho, atenção e por enfrentarem todos os desafios ao meu lado até aqui, e por estarem prontos para os que virão. Agradeço especialmente ao professor Sementille, o melhor orientador que poderia ter, que entendeu meus problemas e medos e sempre ofereceu suporte durante toda a graduação. Juntamente, obrigado Davi, sua dedicação e generosidade fizeram toda a diferença neste trabalho.
+
+% \end{agradecimentos}
+
+% TODO: epigrafe
+
+% Epígrafe
+% \begin{epigrafe}
+% 	\vspace*{\fill}
+% 	\begin{flushright}
+%             \textit{"People won't know how you feel unless you tell them."}\\
+% 		- Frieren.
+% 	\end{flushright}
+% \end{epigrafe}
+
+
+% --------------------------------------------------------
+% RESUMOS
+% --------------------------------------------------------
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+	A cultura e o lazer são partes fundamentais da experiência humana, especialmente em sociedade, e portanto, o limitado tempo disponível para atividades culturais (sejam elas shows, peças, cinema ou festas) deve ser bem investido. Entretanto, ao decidir participar de alguma atividade cultural, nem sempre está claro quais são as opções disponíveis numa determinada data ou região, visto que as informações de quais eventos ocorrem estão dispostas de maneira dispersa em meios que nem sequer foram projetados para hospedar este tipo de informação, como em perfis em redes sociais, blogs ou jornais locais. O presente projeto visa então apresentar uma alternativa: uma plataforma que reúna todas as atividades culturais de uma determinada região, apresentando-as de maneira concisa e organizada, sem que seja necessário demasiado esforço para conferi-las.\\
+	\textbf{Palavras-chave:} Cultura, Lazer, Angular, Flask, Cliente-Servidor.
+\end{resumo}
+
+% TODO: plavras chave; Abstract
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+	\begin{otherlanguage*}{english}
+		Culture and Leisure are fundamental components of the human experience, especially in society. Therefore, the limited time that is available for cultural activities (such as shows, plays, films or parties) must be well spent. However, when deciding to partake in a cultural activity, it may not be clear what are the available options in a given date or region, as the information of what events are happening are laid out in vehicles that are not even designed to host this kind of information, such as in social media profiles, blogs or local newspaper. The presented project then aims to present an alternative: a platform that gathers all cultural activities in a given region, presenting them in a concise and organized way, without the need of unnecessary effort to check on them.\\
+		\textbf{Keywords:} Culture, Leisure, Angular, Flask, Client-Server.
+	\end{otherlanguage*}
+\end{resumo}
+
+
+% --------------------------------------------------------
+% LISTA DE ILUSTRAÇÕES
+% --------------------------------------------------------
+
+% inserir lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+
+% --------------------------------------------------------
+% LISTA DE QUADROS
+% --------------------------------------------------------
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+\cleardoublepage
+% ---
+
+% --------------------------------------------------------
+% LISTA DE TABELAS
+% --------------------------------------------------------
+
+% inserir lista de tabelas
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables*
+%\cleardoublepage
+
+% --------------------------------------------------------
+% LISTA DE ABREVIATURAS E SIGLAS
+% --------------------------------------------------------
+
+% TODO: Siglas
+
+% \begin{siglas}
+%     \item[2D] Duas Dimensões 
+%     \item[3D] Três Dimensões 
+%     \item[AM] Aprendizado de Máquina 
+%     \item[ASL] \emph{American Sign Language}
+%     \item[AVI] \emph{Audio Video Interleave}
+%     \item[CSL] \emph{Chinese Sign Language}
+%     \item[CNN] \emph{Convolutional Neural Network}
+%     \item[HD] \emph{High Definition}
+%     \item[IA] Inteligência Artificial
+%     \item[IBGE] Instituto Brasileiro de Geografia e Estatística
+%     \item[JSON] \emph{JavaScript Object Notation} 
+%     \item[KNN] \emph{K-Nearest Neighbors}
+%     \item[LIBRAS] Língua Brasileira de Sinais 
+%     \item[MP4] \emph{Moving Picture Experts Group 4}
+%     \item[OMS] Organização Mundial da Saúde 
+%     \item[RF] \emph{Random Forest}
+%     \item[RGB] \emph{Red, Green and Blue}
+%     \item[RGBD] \emph{Red, Green, Blue and Depth}
+%     \item[SLERP] \emph{Spherical Linear Interpolation}
+
+% \end{siglas}
+% --------------------------------------------------------
+
+% --------------------------------------------------------
+% SUMÁRIO
+% --------------------------------------------------------
+
+% inserir o sumario
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+
+% --------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% --------------------------------------------------------
+
+\pagestyle{simple}
+
+% Arquivos .tex do texto, podendo ser escritos em um único arquivo ou divididos da forma desejada
+
+\input{chapters/01-Introducao}
+\input{chapters/02-SolucoesExistentes}
+\input{chapters/03-DescricaoProjeto}
+\input{chapters/04-Riscos}
+\input{chapters/05-Cronograma}
+\input{chapters/06-Conclusao}
+
+
+% --------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% --------------------------------------------------------
+
+\postextual
+
+
+% --------------------------------------------------------
+% REFERÊNCIAS BIBLIOGRÁFICAS
+% --------------------------------------------------------
+
+\bibliography{referencias}
+
+
+% --------------------------------------------------------
+% GLOSSÁRIO
+% --------------------------------------------------------
+
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%\glossary
+
+
+% --------------------------------------------------------
+% APÊNDICES
+% --------------------------------------------------------
+
+% TODO: verificar apendices
+
+% % Inicia os apêndices
+% \begin{apendicesenv}
+% %Imprime uma página indicando o início dos apêndices
+% \partapendices
+% \label{apendices}
+
+% \chapter{Código de processamento do MediaPipe e geração dos arquivos JSON}
+% \label{apend.codigo-python}
+
+% \lstinputlisting[label={cod.processa-mediapipe}, language=Python]{code/teste_saida_mp.py}
+
+% \chapter{Código de animação do esqueleto no Unity3D}
+% \label{apend.codigo-csharp}
+
+% \lstinputlisting[label={cod.anima-esqueleto}, language=C]{code/MediaPipeJSONParser.cs}
+
+% \end{apendicesenv}
+
+
+% --------------------------------------------------------
+% ÍNDICE REMISSIVO
+% --------------------------------------------------------
+
+%\printindex
+
+
+% --------------------------------------------------------
+% FINAL DO DOCUMENTO
+% --------------------------------------------------------
+
+\end{document}

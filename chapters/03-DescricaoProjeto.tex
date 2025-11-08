@@ -1,0 +1,159 @@
+\chapter{Descrição do Projeto}
+\label{ch.descricao-projeto}
+
+O projeto consiste em uma aplicação, estruturada na arquitetura Cliente-Servidor, onde a principal entidade é um “Evento”, e os três principais atores que com ela interagem são os “Usuários”, “Organizações” e “Moderadores”. Toda a aplicação gira em torno desses Eventos, como eles são criados, organizados e consumidos, portanto entender como ele se relaciona com os atores é o suficiente para entender a estrutura e funcionamento da aplicação.
+
+Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultural (tal qual um show, peça ou festival), contando com dados como nome, categoria, descrição, organizadores, data, local e uma imagem promocional. Cada Evento tem uma página própria, onde todas as informações referentes são apresentadas com clareza. A \autoref{fig:tipo-evento} representa como o Evento é estruturado, definindo então o Tipo Evento. 
+
+\begin{figure}[H]
+    \centering
+    \caption[Tipo Evento]{Tipo Evento}
+    \includegraphics[width = 0.6\linewidth]{figs/03-descricao-projeto/tipo-evento.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:tipo-evento}
+\end{figure}
+
+O ator denominado Usuário representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais em sua região. A página principal da aplicação conta com um calendário semanal, onde são apresentados os Eventos que estarão ocorrendo. Também é possível acessar uma página onde há um calendário mensal dos Eventos, ou também uma página correspondente a um dia específico. Também existe uma página de busca, que permite filtrar e buscar por Eventos específicos, baseado em texto, data e categoria. É possível, a qualquer momento, clicar em um Evento para navegar à sua página correspondente.
+
+O ator denominado Organização representa uma organização que gerencia eventos culturais, e é o responsável por criar os Eventos (isto é, preencher um formulário com os dados de um evento cultural). Ao contrário do Usuário, a Organização deve realizar um login, de maneira que seja possível estabelecer um contato. Seu papel é de criar os Eventos, de maneira que entrem no sistema, a entidade seja criada, e possam ser consumidos pelos usuários, processo que é realizado por meio de uma página que age como um formulário, coletando os dados referentes à entidade. Uma Organização pode ainda gerenciar um Evento, atualizando seus dados de acordo com o tempo, ou excluí-los caso necessário.
+
+O último ator é o Moderador, e ele assume uma função administrativa na plataforma: uma vez que Eventos criados por Organizações não são imediatamente visíveis ao público, seu trabalho é de analisar, aprovar ou reprovar Eventos os criados, de maneira que nenhum deles viole os termos de uso da plataforma (como, por exemplo, spam). Um Evento que é aprovado por um Moderador se torna visível aos Usuários, ao passo que um reprovado gera uma notificação à Organização referente. Dado a natureza do papel que este ator exerce, os moderadores são escolhidos pelos gestores da plataforma, de maneira remunerada. 
+
+O comportamento de cada um dos atores em relação à aplicação estão descrito na \autoref{fig:use-case-usuario} e \autoref{fig:use-case-moderador-organizador}, representados por meio de um diagrama de caso de uso:
+
+\begin{figure}[H]
+    \centering
+    \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
+    \includegraphics[width = 0.7\linewidth]{figs/03-descricao-projeto/use-case-usuario.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:use-case-usuario}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption[Caso de Uso - Organizador e Moderador]{Caso de Uso - Organizador e Moderador}
+    \includegraphics[width = 0.7\linewidth]{figs/03-descricao-projeto/use-case-moderador-organizador.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:use-case-moderador-organizador}
+\end{figure}
+
+Uma vez que definimos tanto o tipo Evento, quanto os atores do sistema, podemos entender como eles se relacionam, por meio de um diagrama de classe, representado  na \autoref{fig:diagrama-classe}.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama de Classe]{Diagrama de Classe}
+    \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/diagrama-classe.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-classe}
+\end{figure}
+
+De maneira sucinta, podemos dividir a plataforma nas seguintes telas principais, referentes aos seguintes atores:
+
+% \begin{center}
+%     \begin{tabular}{|c|c|c|}
+%         \hline
+%         Usuário & Organização & Moderador \\ 
+%         \hline
+%         Página Principal & \makecell{Listagem de Eventos \\ (para Gestão)} & \makecell{Listagem de Eventos \\ (para Análise)} \\  
+%         Agenda Semanal & Criação de Eventos & \makecell{Página de Evento \\ (para Análise)} \\    
+%         Agenda Mensal & \makecell{Página de Evento \\ (para Gestão)} &  \\    
+%         Agenda Diária &   &  \\    
+%         Busca de Eventos &  &  \\    
+%         Página de Evento &  &  \\
+%         \hline
+%     \end{tabular}
+% \end{center}
+
+\begin{quadro}[H]
+    \caption{Telas da aplicação separadas por tipo de Usuário.}
+    % \resizebox{\textwidth}{!}{%
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \textbf{Usuário} & \textbf{Organização} & \textbf{Moderador} \\ 
+            \hline
+            Página Principal & \makecell{Listagem de Eventos \\ (para Gestão)} & \makecell{Listagem de Eventos \\ (para Análise)} \\  
+            Agenda Semanal & Criação de Eventos & \makecell{Página de Evento \\ (para Análise)} \\    
+            Agenda Mensal & \makecell{Página de Evento \\ (para Gestão)} &  \\    
+            Agenda Diária &  &  \\    
+            Busca de Eventos &  &  \\    
+            Página de Evento &  &  \\
+            \hline
+        \end{tabular}
+    % }
+\fonte{Elaborada pelo autor.}
+\label{tabela:telas-aplicacao}
+\end{quadro}
+
+% \begin{quadro}[H]
+% \caption{Telas da aplicação separadas por tipo de Usuário.}
+% \resizebox{\textwidth}{!}{%
+% \begin{tabular}{|
+% >{\columncolor[HTML]{FFFFFF}}l |
+% >{\columncolor[HTML]{FFFFFF}}l |
+% >{\columncolor[HTML]{FFFFFF}}l |}
+% \hline
+% \multicolumn{1}{|c|}{\cellcolor[HTML]{FFFFFF}\textbf{Usuário}} &
+% \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{Organizador}} &
+% \multicolumn{1}{c|}{\cellcolor[HTML]{FFFFFF}\textbf{Moderador}} \\ \hline
+% Página Principal & \makecell{Listagem de Eventos \\ (para Gestão)} & \makecell{Listagem de Eventos \\ (para Análise)} \\  
+% Agenda Semanal & Criação de Eventos & \makecell{Página de Evento \\ (para Análise)} \\    
+% Agenda Mensal & \makecell{Página de Evento \\ (para Gestão)} &  \\    
+% Agenda Diária &   &  \\    
+% Busca de Eventos &  &  \\    
+% Página de Evento &  &  \\ \hline
+% \end{tabular}%
+% }
+% \fonte{Elaborada pelo autor.}
+% \label{tabela:comparacao-datasets}
+% \end{quadro}
+
+\section{Tecnologias Utilizadas}
+\label{sec.tecnologias-utilizadas}
+    
+Dado a natureza do projeto, seus objetivos e seus requisitos, é possível definir como ele será implementado, assim como as tecnologias escolhidas para tal. 
+
+Em termos de arquitetura, a mais adequada é a Cliente-Servidor: ela permite que um \emph{Backend} (denominado Servidor) receba, armazene, processe, gerencie e sirva dados, de acordo com pedidos realizados por um \emph{Frontend} (denominado Cliente), através de requisições HTTP feitas através da internet. Esta arquitetura é vantajosa pois desacopla o \emph{Frontend} do \emph{Backend}, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. O único co-requisito entre as duas partes é que elas sejam capazes de se comunicar por meio de requisições HTTP, o que não é uma funcionalidade incomum. Adicionalmente, ela permite que diversos Clientes diferentes se comuniquem com o mesmo Servidor, flexibilizando a natureza do Cliente, que pode ser desde uma aplicação  web, até um aplicativo mobile.
+
+Para o \emph{Backend} do projeto, será empregado a linguagem de programação Python, junto ao \emph{framework} Flask. A linguagem é escolhida devido a sua flexibilidade, escalabilidade e facilidade de uso, além de oferecer uma boa performance.  Além disso, ela oferece a possibilidade de utilizar o Flask, que é um \emph{framework} para o desenvolvimento de servidores REST, o tipo de servidor que cumpre exatamente o que se espera para essa arquitetura: uma maneira padronizada dos Clientes acessarem o Servidor por meio de requisições HTTP, de maneira que o Servidor consiga as responder de acordo. Para armazenar os dados de usuários de dos eventos, foi escolhido um banco de dados relacional tradicional, o PostgreSQL, devido a sua fácil utilização tanto com Python quanto com a própria arquitetura Cliente-Servidor.
+
+Para o \emph{Frontend}, o Cliente será implementado como uma aplicação Web, a princípio. Este tipo de aplicação funciona bem na arquitetura Cliente-Servidor, visto que a própria natureza dela implica numa ênfase em requisições HTTP. Utilizando o \emph{framework} Angular, que emprega a linguagem TypeScript, é possível desenvolver uma aplicação robusta para navegadores web. Adicionalmente, aplicações utilizando Angular costumam se comportar bem em navegadores para aparelhos celulares, tornando-se assim uma escolha flexível.
+
+Deve-se notar que boa parte do público em potencial do serviço utilizaria aparelhos celulares para acessá-lo. Com isso em mente, também é possível desenvolver um aplicativo de celular que agisse como um Cliente. Soluções PWAs, ou Progressive Web Apps, são as ideais, visto que permitem desenvolver aplicativos mobile utilizando ferramentas usadas no desenvolvimento web tradicional. No caso do Ionic, um \emph{framework} PWA, é empregado o próprio Angular, assim justificando ainda mais a escolha deste, visto que isto tornaria as aplicações web e mobile semelhantes, e reduziria o atrito no desenvolvimento paralelo das duas.
+    
+\section{Procedimentos de Validação}
+\label{sec.procedimentos-validacao}
+    
+Para garantir o funcionamento do sistema, ele será testado durante e após o seu desenvolvimento, empregando a estratégia da Pirâmide de Testes, onde cada nível da pirâmide corresponde a um tipo de teste a ser executado na aplicação. Com essa estrutura, é possível testar a aplicação de maneira integral, garantindo que tudo esteja funcionando em todos os níveis possíveis.
+
+A base da pirâmide são os Testes Unitários, onde cada componente da aplicação é testado de maneira individual, verificando se o seu comportamento, em isolação, é o esperado. São os testes mais baratos de serem implementados e garantem o funcionamento individual de cada peça do sistema. Eles podem ser implementados a nível de componentes, classes ou funções.
+
+O meio da pirâmide corresponde aos Testes de Integração, que irão averiguar como os componentes, já testados pelos Testes Unitários, se comunicam entre si. É nesta etapa que são testadas conexões e integrações entre serviços, clientes e servidores e diferentes blocos da aplicação, bem como o funcionamento de páginas como um todo. Portanto, são realizados a nível de páginas, ou de  \emph{endpoints} completos.
+
+O topo desta pirâmide diz respeito aos Testes Ponta-a-Ponta (ou End to End, E2E), que são os mais complexos. Eles testam a aplicação seguindo uma abordagem de Caixa-Preta, ou seja, desconsiderando o funcionamento mecânico da aplicação e verificando apenas o sistema como ele é apresentado para o usuário. Em outras palavras, é um teste que envolve utilizar a aplicação tal qual ela foi projetada para, em busca de erros, bugs e inconsistências. Devido à sua natureza, testes E2E são realizados em nível de aplicação.
+   
+\section{Protótipo Desenvolvido}
+\label{sec.prototipo-desenvolvido}
+
+Durante a terceira etapa da Disciplina TCC 1, o projeto entrou efetivamente em desenvolvimento, a fim de entregar um protótipo que ilustre o que o projeto final virá a se tornar. Ao fim desta etapa, os fundamentos do sistema foram desenvolvidos, bem como algumas funcionalidades para o ator Usuário.
+
+Todo o banco de dados foi criado, e está praticamente pronto, salvo pequenos ajustes. O componente \emph{backend} do sistema teve a sua fundação desenvolvida, dando suporte à requisições HTTP e também acesso ao Banco de Dados. Os \emph{endpoints} implementados foram \emph{/evento}, \emph{/buscarEventos }e \emph{/getBuscarParams}, que contemplão o acesso básico dos usuários aos eventos da plataforma. Entretanto, estes são representam todos os \emph{endpoints} necessários, que serão implementados futuramente.
+
+O componente \emph{frontend} também teve a sua fundação desenvolvida, sendo implementadas a página nuclear da aplicação web, um cliente HTTP e um serviço para se comunicar com o servidor. Com estes componentes, foram desenvolvidas as páginas de evento e de busca de evento. Estas páginas implementadas no cliente correspondem aos \emph{endpoints} implementados no servidor. Além disso, a identidade visual da aplicação foi desenvolvida, empregando um design claro e colorido, se tornando assim sóbrio, mas descontraído.
+
+As seguintes figuras, \autoref{fig:captura-busca} e \autoref{fig:captura-evento}, são capturas das respectivas telas, mencionadas no parágrafo acima.
+
+\begin{figure}[H]
+    \centering
+    \caption[Captura - Tela de Busca]{Captura - Tela de Busca}
+    \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/captura-busca.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:captura-busca}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption[Captura - Tela de Evento]{Captura - Tela de Evento}
+    \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/captura-evento.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:captura-evento}
+\end{figure}
