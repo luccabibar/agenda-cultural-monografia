@@ -1,9 +1,9 @@
 \chapter{Descrição do Projeto}
 \label{ch.descricao-projeto}
 
-O projeto consiste em uma aplicação, estruturada na arquitetura Cliente-Servidor, onde a principal entidade é um “Evento”, e os três principais atores que com ela interagem são os “Usuários”, “Organizações” e “Moderadores”. Toda a aplicação gira em torno desses Eventos, como eles são criados, organizados e consumidos, portanto entender como ele se relaciona com os atores é o suficiente para entender a estrutura e funcionamento da aplicação.
+O projeto consiste em uma aplicação, estruturada na arquitetura Cliente-Servidor, onde a principal entidade é um “Evento”, e os três principais atores que com ela interagem são os “Usuários”, “Organizadores” e “Moderadores”. Toda a aplicação gira em torno desses Eventos, como eles são criados, organizados e consumidos, portanto entender como ele se relaciona com os atores é o suficiente para entender a estrutura e funcionamento da aplicação.
 
-Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultural (tal qual um show, peça ou festival), contando com dados como nome, categoria, descrição, organizadores, data, local e uma imagem promocional. Cada Evento tem uma página própria, onde todas as informações referentes são apresentadas com clareza. A \autoref{fig:tipo-evento} representa como o Evento é estruturado, definindo então o Tipo Evento. 
+Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultural (tal qual um show, peça ou festival), contando com dados como nome, categoria, descrição, organizadores, data, local e uma imagem promocional. Cada Evento tem uma página própria, onde todas as informações referentes são apresentadas com clareza. A \autoref{fig:tipo-evento} representa como o Evento é estruturado, definindo então o Tipo Evento. Relacionado ao Evento, há uma lista de atualizações denominada AtualizacaoEvento, que armazena pequenas atualizações de texto sobre o Evento.
 
 \begin{figure}[H]
     \centering
@@ -13,13 +13,15 @@ Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultu
     \label{fig:tipo-evento}
 \end{figure}
 
-O ator denominado Usuário representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais em sua região. A página principal da aplicação conta com um calendário semanal, onde são apresentados os Eventos que estarão ocorrendo. Também é possível acessar uma página onde há um calendário mensal dos Eventos, ou também uma página correspondente a um dia específico. Também existe uma página de busca, que permite filtrar e buscar por Eventos específicos, baseado em texto, data e categoria. É possível, a qualquer momento, clicar em um Evento para navegar à sua página correspondente.
+% TODO:  usuario -> pessoa
 
-O ator denominado Organização representa uma organização que gerencia eventos culturais, e é o responsável por criar os Eventos (isto é, preencher um formulário com os dados de um evento cultural). Ao contrário do Usuário, a Organização deve realizar um login, de maneira que seja possível estabelecer um contato. Seu papel é de criar os Eventos, de maneira que entrem no sistema, a entidade seja criada, e possam ser consumidos pelos usuários, processo que é realizado por meio de uma página que age como um formulário, coletando os dados referentes à entidade. Uma Organização pode ainda gerenciar um Evento, atualizando seus dados de acordo com o tempo, ou excluí-los caso necessário.
+O ator denominado Pessoa representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais em sua região. A página principal da aplicação conta com um calendário semanal, onde são apresentados os Eventos que estarão ocorrendo. Também é possível acessar uma página onde há um calendário diário dos Eventos. Também existe uma página de busca, que permite filtrar e buscar por Eventos específicos, baseado em texto, data, categoria e região. É possível, a qualquer momento, clicar em um Evento para navegar à sua página correspondente.
 
-O último ator é o Moderador, e ele assume uma função administrativa na plataforma: uma vez que Eventos criados por Organizações não são imediatamente visíveis ao público, seu trabalho é de analisar, aprovar ou reprovar Eventos os criados, de maneira que nenhum deles viole os termos de uso da plataforma (como, por exemplo, spam). Um Evento que é aprovado por um Moderador se torna visível aos Usuários, ao passo que um reprovado gera uma notificação à Organização referente. Dado a natureza do papel que este ator exerce, os moderadores são escolhidos pelos gestores da plataforma, de maneira remunerada. 
+O ator denominado Organizador representa uma organização que gerencia eventos culturais, e é o responsável por criar os Eventos (isto é, preencher um formulário com os dados de um evento cultural). Ao contrário do Usuário, o Organizador deve realizar um login, de maneira que seja possível estabelecer um contato. Seu papel é de criar os Eventos, de maneira que entrem no sistema, a entidade seja criada, e possam ser consumidos pelos usuários. Este processo é realizado por meio de uma página que age como um formulário, coletando os dados referentes à entidade. Uma Organização pode ainda editar um Evento, adicionar uma atualização a ele, ou excluí-los caso necessário.
 
-O comportamento de cada um dos atores em relação à aplicação estão descrito na \autoref{fig:use-case-usuario} e \autoref{fig:use-case-moderador-organizador}, representados por meio de um diagrama de caso de uso:
+O último ator é o Moderador, e ele assume uma função administrativa na plataforma: uma vez que Eventos criados por Organizações não são imediatamente visíveis ao público, seu trabalho é de analisar, aprovar ou reprovar Eventos criados, de maneira que nenhum deles viole os termos de uso da plataforma (como, por exemplo, spam). Um Evento que é aprovado por um Moderador se torna visível aos Usuários, ao passo que um reprovado é restringido, mas ainda pode ser editado pelo Organizador referente. Dado a natureza do papel que este ator exerce, os moderadores são escolhidos pelos gestores da plataforma. 
+
+O comportamento de cada um dos atores em relação à aplicação estão descrito na \autoref{fig:use-case-usuario} e \autoref{fig:use-case-moderador-organizador}, representados por meio de diagramas de caso de uso:
 
 \begin{figure}[H]
     \centering
@@ -114,14 +116,27 @@ Dado a natureza do projeto, seus objetivos e seus requisitos, é possível defin
 
 Em termos de arquitetura, a mais adequada é a Cliente-Servidor: ela permite que um \emph{Backend} (denominado Servidor) receba, armazene, processe, gerencie e sirva dados, de acordo com pedidos realizados por um \emph{Frontend} (denominado Cliente), através de requisições HTTP feitas através da internet. Esta arquitetura é vantajosa pois desacopla o \emph{Frontend} do \emph{Backend}, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. O único co-requisito entre as duas partes é que elas sejam capazes de se comunicar por meio de requisições HTTP, o que não é uma funcionalidade incomum. Adicionalmente, ela permite que diversos Clientes diferentes se comuniquem com o mesmo Servidor, flexibilizando a natureza do Cliente, que pode ser desde uma aplicação  web, até um aplicativo mobile.
 
-Para o \emph{Backend} do projeto, será empregado a linguagem de programação Python, junto ao \emph{framework} Flask. A linguagem é escolhida devido a sua flexibilidade, escalabilidade e facilidade de uso, além de oferecer uma boa performance.  Além disso, ela oferece a possibilidade de utilizar o Flask, que é um \emph{framework} para o desenvolvimento de servidores REST, o tipo de servidor que cumpre exatamente o que se espera para essa arquitetura: uma maneira padronizada dos Clientes acessarem o Servidor por meio de requisições HTTP, de maneira que o Servidor consiga as responder de acordo. Para armazenar os dados de usuários de dos eventos, foi escolhido um banco de dados relacional tradicional, o PostgreSQL, devido a sua fácil utilização tanto com Python quanto com a própria arquitetura Cliente-Servidor.
+% reescrever sabosta fodase piton
 
-Para o \emph{Frontend}, o Cliente será implementado como uma aplicação Web, a princípio. Este tipo de aplicação funciona bem na arquitetura Cliente-Servidor, visto que a própria natureza dela implica numa ênfase em requisições HTTP. Utilizando o \emph{framework} Angular, que emprega a linguagem TypeScript, é possível desenvolver uma aplicação robusta para navegadores web. Adicionalmente, aplicações utilizando Angular costumam se comportar bem em navegadores para aparelhos celulares, tornando-se assim uma escolha flexível.
 
-Deve-se notar que boa parte do público em potencial do serviço utilizaria aparelhos celulares para acessá-lo. Com isso em mente, também é possível desenvolver um aplicativo de celular que agisse como um Cliente. Soluções PWAs, ou Progressive Web Apps, são as ideais, visto que permitem desenvolver aplicativos mobile utilizando ferramentas usadas no desenvolvimento web tradicional. No caso do Ionic, um \emph{framework} PWA, é empregado o próprio Angular, assim justificando ainda mais a escolha deste, visto que isto tornaria as aplicações web e mobile semelhantes, e reduziria o atrito no desenvolvimento paralelo das duas.
+É o tipo de aplicação que cumpre de forma concisa e confiável o que se espera para este componente: uma maneira padronizada dos Clientes acessarem o Servidor por meio de requisições HTTP, de modo que o Servidor consiga as responder de acordo; amplo apoio para aplicações REST, como controladores REST; e acesso ao banco de dados via JDBC.
+
+Para o \emph{Backend} do projeto, foi empregado a linguagem de programação Java, junto ao \emph{framework} Springboot. 
+Ele permitiu o desenvolvimento, de maneira robusta e confiável, de um meio para os Clientes acessarem as funcionalidades do Servidor, de maneira padronizada por uma API REST.
+O \emph{framework} oferece amplo apoio para aplicações REST, como controladores REST, filtros de requisições HTTP, e acesso ao banco de dados via JDBC. Utilizando o filtro de requisições, foi possível implementar uma boa solução de autenticação de usuários via JWT, que foi a abordagem escolhida para esta tarefa. 
+
+Para armazenar os dados de usuários de dos eventos, foi escolhido um banco de dados relacional tradicional, o PostgreSQL, devido a sua fácil utilização tanto com o Springboot quanto com a própria arquitetura Cliente-Servidor.
+
+Para o \emph{Frontend}, o Cliente foi implementado como uma aplicação Web, a princípio. Este tipo de aplicação funciona bem na arquitetura Cliente-Servidor, visto que a própria natureza dela implica numa ênfase em requisições HTTP. Utilizando o \emph{framework} Angular, que emprega a linguagem TypeScript, é possível desenvolver uma aplicação robusta para navegadores web. Adicionalmente, aplicações utilizando Angular costumam se comportar bem em navegadores para aparelhos celulares, tornando-se assim uma escolha flexível.
+
+Ambas as linguagens escolhidas são fortemente tipadas, e oferecem apoio à abordagem de programação orientada à objeto. Isto garante a plena comunicação entre cada componente da aplicação, e garante que ela se comporte exatamente como esperado, facilitando o desenvolvimento do projeto.
+
+Deve-se notar que boa parte do público em potencial do serviço utilizaria aparelhos celulares para acessá-lo. Com isso em mente, também é possível desenvolver um aplicativo de celular que agisse como um Cliente. Soluções PWAs, ou \emph{Progressive Web Apps}, são as ideais, visto que permitem desenvolver aplicativos mobile utilizando ferramentas usadas no desenvolvimento web tradicional. No caso do Ionic, um \emph{framework} PWA, é empregado o próprio Angular, assim justificando ainda mais a escolha deste, visto que isto tornaria as aplicações web e mobile semelhantes, e reduziria o atrito no desenvolvimento paralelo das duas.
     
 \section{Procedimentos de Validação}
 \label{sec.procedimentos-validacao}
+
+% TODO: duvida testes
     
 Para garantir o funcionamento do sistema, ele será testado durante e após o seu desenvolvimento, empregando a estratégia da Pirâmide de Testes, onde cada nível da pirâmide corresponde a um tipo de teste a ser executado na aplicação. Com essa estrutura, é possível testar a aplicação de maneira integral, garantindo que tudo esteja funcionando em todos os níveis possíveis.
 
@@ -131,14 +146,26 @@ O meio da pirâmide corresponde aos Testes de Integração, que irão averiguar 
 
 O topo desta pirâmide diz respeito aos Testes Ponta-a-Ponta (ou End to End, E2E), que são os mais complexos. Eles testam a aplicação seguindo uma abordagem de Caixa-Preta, ou seja, desconsiderando o funcionamento mecânico da aplicação e verificando apenas o sistema como ele é apresentado para o usuário. Em outras palavras, é um teste que envolve utilizar a aplicação tal qual ela foi projetada para, em busca de erros, bugs e inconsistências. Devido à sua natureza, testes E2E são realizados em nível de aplicação.
    
-\section{Protótipo Desenvolvido}
-\label{sec.prototipo-desenvolvido}
+\section{Produto Desenvolvido}
+\label{sec.produto-desenvolvido}
 
-Durante a terceira etapa da Disciplina TCC 1, o projeto entrou efetivamente em desenvolvimento, a fim de entregar um protótipo que ilustre o que o projeto final virá a se tornar. Ao fim desta etapa, os fundamentos do sistema foram desenvolvidos, bem como algumas funcionalidades para o ator Usuário.
+Durante o período em que ocorreram as disciplinas TCC 1 e 2, foi desenvolvido um Produto Mínimo Viável, e totalmente funcional, desta aplicação. Uma plataforma que permite às entidades organizadoras de eventos os divulgarem, e, aos usuários, encontrarem eventos relevantes para participarem.  
 
-Todo o banco de dados foi criado, e está praticamente pronto, salvo pequenos ajustes. O componente \emph{backend} do sistema teve a sua fundação desenvolvida, dando suporte à requisições HTTP e também acesso ao Banco de Dados. Os \emph{endpoints} implementados foram \emph{/evento}, \emph{/buscarEventos }e \emph{/getBuscarParams}, que contemplão o acesso básico dos usuários aos eventos da plataforma. Entretanto, estes são representam todos os \emph{endpoints} necessários, que serão implementados futuramente.
+O componente \emph{backend} desenvolvido conta com diversos \emph{endpoints}, por onde é possível acessar as funcionalidades do Servidor. 
+Os dois principais grupos de \emph{endpoints} são relacionados aos Eventos, e aos Usuários.
+Por meio deles, é possível tomar todas as ações da aplicação: 
+Criar uma conta e fazer login se referem aos \emph{endpoints} de Usuarios. Já buscar e consumir eventos, bem como criar, editar, moderar e excluí-los, são funcionalidades dos \emph{endpoints} de eventos.
+O compoente backend também conta com um sistema de autenticação via JWT, garantindo que apenas os usuários adequados tem acesso à determinados recursos protegidos.
 
-O componente \emph{frontend} também teve a sua fundação desenvolvida, sendo implementadas a página nuclear da aplicação web, um cliente HTTP e um serviço para se comunicar com o servidor. Com estes componentes, foram desenvolvidas as páginas de evento e de busca de evento. Estas páginas implementadas no cliente correspondem aos \emph{endpoints} implementados no servidor. Além disso, a identidade visual da aplicação foi desenvolvida, empregando um design claro e colorido, se tornando assim sóbrio, mas descontraído.
+O componente \emph{frontend} desenvolvido age como o Cliente que acessa os dados do Servidor, implementando páginas na web que utilizam suas funcionalidades. 
+Ele acessa essas funcionalidades por meio de requisições HTTP aos \emph{endpoints} do Servidor, por meio de um serviço que oferece funcionalidades de HTTP.
+Como usuário, é possível procurar eventos por meio de filtros de busca, e ver seus detalhes além de conseguir visualizar todos os eventos que ocorrem em um determinado dia ou semana, por meio de uma agenda. 
+Como um Organizador, é possível criar, editar e excluir eventos, e como um Moderador, é possível analisar e moderar os eventos.
+É possível se identificar por meio de um sistema de login, que mantém o usuário ativo por meio de \emph{cookies} de navegador.
+
+A identidade visual da adotada, embora não seja a final, reflete a visão da plataforma, visando ser sóbria, mas descontraída. Assim, ela emprega  um design claro e colorido. 
+
+% TODO: figuras
 
 As seguintes figuras, \autoref{fig:captura-busca} e \autoref{fig:captura-evento}, são capturas das respectivas telas, mencionadas no parágrafo acima.
 
