@@ -3,24 +3,47 @@
 
 % TODO: resolver esse cite ai
 
-Já existem alguns outros meios que tentam agregar as atividades culturais da região de Bauru. Entretanto, nenhuma delas apresenta o conjunto de características completo que o presente trabalho visa implementar. Seguem exemplos:
+Já existem alguns outros meios que tentam agregar as atividades culturais da região de Bauru. 
+Entretanto, nenhuma delas apresenta o conjunto de características completo que o presente trabalho visa implementar. 
+Seguem exemplos:
 
-A Agenda Social Bauru \cite{agenda-socialbauru} é uma página da web que reúne diversas atividades culturais da cidade, dirigida pela Social Bauru, uma mídia online focada em divulgar atividades e atrações. A página contém diversos eventos, organizados por categorias e separados por dia, ao longo de uma lista em texto corrido. Entretanto, a coluna é restrita (visto que é escrita por um redator da agência, não cumprindo então a função de uma plataforma aberta), e tem uma intenção publicitária acima de tudo. Além disso, é possível visualizar o conteúdo apenas em forma de lista.
+A Agenda Social Bauru \cite{agenda-socialbauru} é uma página da web que reúne diversas atividades culturais da cidade, dirigida pela Social Bauru, uma mídia online focada em divulgar atividades e atrações. 
+A página contém diversos eventos, organizados por categorias e separados por dia, ao longo de uma lista em texto corrido. 
+Entretanto, a coluna é restrita (visto que é escrita por um redator da agência, não cumprindo então a função de uma plataforma aberta), e tem uma intenção publicitária acima de tudo. 
+Além disso, é possível visualizar o conteúdo apenas em forma de lista.
 
-Outra alternativa é a Agenda JC \cite{agenda-jcnet}, da JCNet. Ela é mais completa, mas ainda é  restrita por ser escrita por uma redação. A página lista o horário de funcionamento de diversos estabelecimentos da cidade, como restaurantes, bares e lanchonetes. Embora essa riqueza de dados seja interessante, eles são apresentados de maneira desajeitada numa lista corrida, tornando a busca cansativa. Finalmente, ela não é exatamente uma agenda cultural dos eventos da cidade. 
+Outra alternativa é a Agenda JC \cite{agenda-jcnet}, da JCNet. 
+Ela é mais completa, mas ainda é  restrita por ser escrita por uma redação. 
+A página lista o horário de funcionamento de diversos estabelecimentos da cidade, como restaurantes, bares e lanchonetes. 
+Embora essa riqueza de dados seja interessante, eles são apresentados de maneira desajeitada numa lista corrida, tornando a busca cansativa. 
+Finalmente, ela não é exatamente uma agenda cultural dos eventos da cidade. 
 
-Similar à Agenda Social Bauru, a Agenda JaúClick \cite{agenda-jauclick} é uma página da web que reúne atividades culturais da cidade de Jaú, dirigida pela Jauclick. A página lista eventos individualmente, por meio de uma pequena imagem (Thumbnail). Cada evento tem sua própria página com uma imagem promocional, porém não há nenhum link externo para a página do evento. Assim como as plataformas bauruenses, esta agenda também é restrita (pois é montada pelos administradores), e tem uma intenção publicitária acima de tudo. Assim como as demais, não é possível organizar os eventos por tipo ou por dia, apenas listá-los.
+Similar à Agenda Social Bauru, a Agenda JaúClick \cite{agenda-jauclick} é uma página da web que reúne atividades culturais da cidade de Jaú, dirigida pela Jauclick. 
+A página lista eventos individualmente, por meio de uma pequena imagem (Thumbnail). 
+Cada evento tem sua própria página com uma imagem promocional, porém não há nenhum link externo para a página do evento. 
+Assim como as plataformas bauruenses, esta agenda também é restrita (pois é montada pelos administradores), e tem uma intenção publicitária acima de tudo. 
+Assim como as demais, não é possível organizar os eventos por tipo ou por dia, apenas listá-los.
 
-Tendo em mente estes veículos, é possível notar algumas fraquezas: Todas são escritas por seus respectivos administradores, fazendo com que seja necessário que alguém selecione manualmente os eventos. Além disso, o caráter publicitário tende a favorecer eventos patrocinados.Adicionalmente, as plataformas não oferecem um método de busca, filtro ou visualização, tampouco informações adicionais que, embora não essenciais, são convenientes (como local, imagens, ou um link para mais informações no caso da Jauclick).
+Há também a plataforma Qualaboa \cite{plataforma-qualaboa}, homônima à este projeto.
+Ela tem a função de agregar eventos, a partir de diversas fontes, e permitir que o usuário navegue entre as opções.
+Entretanto, esta plataforma busca eventos apenas em  plataformas de venda de ingressos (como Sympla, Shotgun e Ingresse), o que implica nesta plataforma constar apenas um nicho de eventos, ter um foco estritamente promocional, e não permitir que entidades organizadoras não conseguem cadastrar seus eventos diretamente na plataforma.  
+
+Tendo em mente estes veículos, é possível notar algumas fraquezas: Todas são escritas por seus respectivos administradores, fazendo com que seja necessário que alguém selecione manualmente os eventos. 
+Além disso, o caráter publicitário tende a favorecer eventos patrocinados. 
+Adicionalmente, as plataformas não oferecem um método de busca, filtro ou visualização, tampouco informações adicionais que, embora não essenciais, são convenientes (como local, imagens, ou um link para mais informações no caso da Jauclick).
 
 % TODO: Objetivos
 
 \section{Objetivos}
 \label{sec.objetivos}
 
-Visto isto, é possível definir os objetivos que o projeto deve cumprir, baseado nas lacunas presentes em plataformas similares. Primeiramente, ele deve permitir que qualquer organização publique um evento, ao invés de depender de um redator, pois isso democratiza a divulgação e combate a possibilidade de eventos não serem listados. Para garantir a adesão de organizações à plataforma, o processo de publicação  de um evento deve ter o mínimo de atrito possível, e isso inclui o uso gratuito do serviço.
+Visto isto, é possível definir os objetivos que o projeto deve cumprir, baseado nas lacunas presentes em plataformas similares. 
+Primeiramente, ele deve permitir que qualquer organização publique um evento, ao invés de depender de um redator, pois isso democratiza a divulgação e combate a possibilidade de eventos não serem listados. 
+Para garantir a adesão de organizações à plataforma, o processo de publicação de um evento deve ter o mínimo de atrito possível, e isso inclui o uso gratuito do serviço.
 
-Além disso, é importante que as atividades estejam bem organizadas, para que usuários possam facilmente encontrar eventos que os interessem. Isso implica em implementar ferramentas para busca e filtragem de conteúdo, além de uma maneira refinada de visualizar tal conteúdo. Por último, é importante que os dados referentes a cada atividade também estejam completos e bem dispostos: devem estar disponíveis a data e o local de cada atividade, assim como algum contato com o organizador, e também uma imagem ilustrativa.
+Além disso, é importante que as atividades estejam bem organizadas, para que usuários possam facilmente encontrar eventos que os interessem. 
+Isso implica em implementar ferramentas para busca e filtragem de conteúdo, além de uma maneira refinada de visualizar tal conteúdo. 
+Por último, é importante que os dados referentes a cada atividade também estejam completos e bem dispostos: devem estar disponíveis a data, horário e local de cada atividade, assim como algum contato com o organizador, e também uma imagem ilustrativa.
     
     % \subsection{Objetivo Geral}
     % \label{ssc.objetivo_geral}
