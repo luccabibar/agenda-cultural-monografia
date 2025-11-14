@@ -165,6 +165,7 @@ A fim de garantir a segurança no credenciamento dos usuários, foi adotada uma 
 Para realizar o login, o usuário deve enviar suas credenciais (e-mail e senha, por exemplo) para o servidor.
 Uma vez que os dados são validados, o servidor os codifica em um Token, utilizando uma chave privada, e envia o envia de volta para o cliente.
 Desta forma, o cliente pode acessar endpoints protegidos ao enviar o Token junto à requisição, para se identificar.
+
 Quando o servidor recebe uma requisição em um endpoint protegido, ele verifica a presença do Token de autenticação, e então o decodifica, assim acessando os dados originalmente armazenados.
 Desta forma, o servidor possui uma maneira segura de prover um meio de autenticação ao cliente, uma vez que apenas ele é capaz de codificar e decodificar o Token.
 Note que o cliente em nenhum momento precisa se preocupar em processar o Token, uma vez que ele age apenas como uma chave de autenticação para ele.
