@@ -1,50 +1,94 @@
 \chapter{Descrição do Projeto}
 \label{ch.descricao-projeto}
 
-O projeto consiste em uma aplicação, estruturada na arquitetura Cliente-Servidor, onde a principal entidade é um “Evento”, e os três principais atores que com ela interagem são os “Usuários”, “Organizadores” e “Moderadores”. Toda a aplicação gira em torno desses Eventos, como eles são criados, organizados e consumidos, portanto entender como ele se relaciona com os atores é o suficiente para entender a estrutura e funcionamento da aplicação.
+O projeto consiste em uma aplicação, estruturada na arquitetura Cliente-Servidor, onde a principal entidade é um “Evento”, e os três principais atores que com ela interagem são as Pessoas, “Organizadores” e “Moderadores”.
+Toda a aplicação gira em torno desses Eventos, como eles são criados, organizados e consumidos, portanto entender como ele se relaciona com os atores é o suficiente para entender a estrutura e funcionamento da aplicação.
 
-Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultural (tal qual um show, peça ou festival), contando com dados como nome, categoria, descrição, organizadores, data, local e uma imagem promocional. Cada Evento tem uma página própria, onde todas as informações referentes são apresentadas com clareza. A \autoref{fig:tipo-evento} representa como o Evento é estruturado, definindo então o Tipo Evento. Relacionado ao Evento, há uma lista de atualizações denominada AtualizacaoEvento, que armazena pequenas atualizações de texto sobre o Evento.
+Um Evento é, basicamente, um conjunto de dados correspondente a um evento cultural (tal qual um show, peça ou festival), contando com dados como nome, categoria, descrição, organizadores, data, local e uma imagem promocional.
+Cada Evento tem uma página própria, onde todas as informações referentes são apresentadas com clareza. 
+A \autoref{fig:classe-evento} representa como o Evento é estruturado, definindo então o Tipo Evento. 
+Note que o Tipo Evento inclui uma lista de atualizações, denominada AtualizacaoEvento, que armazena pequenas atualizações de texto sobre o Evento.
 
 \begin{figure}[H]
     \centering
     \caption[Tipo Evento]{Tipo Evento}
-    \includegraphics[width = 0.6\linewidth]{figs/03-descricao-projeto/tipo-evento.png}\\
+    \includegraphics[width = 0.6\linewidth]{figs/diagramas/diagrama-classe-evento.png}\\
     \fonte{Elaborada pelo autor.}
-    \label{fig:tipo-evento}
+    \label{fig:classe-evento}
 \end{figure}
 
-% TODO:  usuario -> pessoa
+% TODO 3.2 AFERIR EXISTENCIA DA HOMEPAGE
+O ator denominado Pessoa representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais. 
+Desta forma, é possível navegar pelas páginas voltadas à exibição de eventos, visto que elas não 
+A página principal conta com um banner exibindo eventos em destaque, e uma seleção de eventos relevantes separados por categoria.
+A página agenda oferece uma exibição dos eventos ao longo de um dia ou de uma semana.
+Na agenda diária, os eventos são organizados pelo seu horário de início.
+Já na agenda semanal, os eventos são organizados pela sua data marcada, mas também pelo seu horário de início, dispondo-os em uma grade, assim tomando a forma de uma agenda. 
+Também existe uma página de busca, que permite filtrar e buscar por Eventos específicos, baseado em texto, data, horário, categoria e região. 
+É possível, a qualquer momento, clicar em um Evento para navegar à sua página correspondente, onde são exibidas todas os seus detalhes.
 
-O ator denominado Pessoa representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais em sua região. A página principal da aplicação conta com um calendário semanal, onde são apresentados os Eventos que estarão ocorrendo. Também é possível acessar uma página onde há um calendário diário dos Eventos. Também existe uma página de busca, que permite filtrar e buscar por Eventos específicos, baseado em texto, data, categoria e região. É possível, a qualquer momento, clicar em um Evento para navegar à sua página correspondente.
+O ator denominado Organizador representa uma entidade organizadora de eventos culturais, e é o responsável por criar e gerir os Eventos. 
+Ao contrário do Usuário, o Organizador deve realizar seu cadastro, na página de cadastro, de maneira que seja possível estabelecer um contato. 
+Uma vez feito login (utilizando dados do cadastro), é possível acessar páginas referentes às funções de Organizador, além das já disponíveis para Pessoas.
+A página de novo evento permite preencher um formulário com dados de uma atividade cultural, resultando na criação de um novo evento, que será consumido pelos demais usuários.
+Também é possível acessar uma página de perfil, onde são exibidos dados deste ator, e também uma lista dos eventos que gerencia.
+Nesta lista, é possível ver todos os eventos deste denominado ator, verificar o status (se foi Aprovado, Reprovado ou se está Em Análise) de cada um, e ainda navegar para a página de edição e exclusão respectiva a cada evento. 
+A página de edição de evento permite ao Organizador tomar duas ações relativas ao Evento: Editar os seus dados, ou adicionar uma Atualização de texto ao evento. 
+Por fim, a página de exclusao de evento oferece a remoção de um determinado evento do sistema, caso seu Organizador assim o queira.
 
-O ator denominado Organizador representa uma organização que gerencia eventos culturais, e é o responsável por criar os Eventos (isto é, preencher um formulário com os dados de um evento cultural). Ao contrário do Usuário, o Organizador deve realizar um login, de maneira que seja possível estabelecer um contato. Seu papel é de criar os Eventos, de maneira que entrem no sistema, a entidade seja criada, e possam ser consumidos pelos usuários. Este processo é realizado por meio de uma página que age como um formulário, coletando os dados referentes à entidade. Uma Organização pode ainda editar um Evento, adicionar uma atualização a ele, ou excluí-los caso necessário.
+O terceiro ator é o Moderador, e ele assume uma função administrativa na plataforma: uma vez que Eventos criados por Organizadores não são imediatamente visíveis ao público, cabe à eles analisar, aprovar ou reprovar Eventos criados, de maneira que nenhum deles viole os termos de uso da plataforma (como, por exemplo, spam). 
+Dado a natureza do papel que este ator exerce, os Moderadores não realizam cadastro como normal,mas são escolhidos pelos gestores da plataforma.
+Na página de perfil do Moderador, há uma lista de eventos, bem como um botão que o leva à pagina de análise de evento.
+Os eventos listados nesta página são aqueles designados à este Moderador, que estão em estado de análise, e devem ser analisados e ter seu status atualizado..
+A página de análise de evento, que apenas o Moderador de um evento tem acesso, apresenta os dados de um determinado Evento em estado de análise, e permite que se atualize o seu status para 'Aprovado' ou 'Reprovado', a depender do julgamento.
+Um Evento que é aprovado por um Moderador se torna visível aos usuários, ao passo que um reprovado é restringido, mas ainda pode ser editado para uma nova tentativa pelo Organizador responsável. 
 
-O último ator é o Moderador, e ele assume uma função administrativa na plataforma: uma vez que Eventos criados por Organizações não são imediatamente visíveis ao público, seu trabalho é de analisar, aprovar ou reprovar Eventos criados, de maneira que nenhum deles viole os termos de uso da plataforma (como, por exemplo, spam). Um Evento que é aprovado por um Moderador se torna visível aos Usuários, ao passo que um reprovado é restringido, mas ainda pode ser editado pelo Organizador referente. Dado a natureza do papel que este ator exerce, os moderadores são escolhidos pelos gestores da plataforma. 
 
 O comportamento de cada um dos atores em relação à aplicação estão descrito na \autoref{fig:use-case-usuario} e \autoref{fig:use-case-moderador-organizador}, representados por meio de diagramas de caso de uso:
 
 \begin{figure}[H]
     \centering
     \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
-    \includegraphics[width = 0.7\linewidth]{figs/03-descricao-projeto/use-case-usuario.png}\\
+    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:use-case-usuario}
 \end{figure}
 
+% TODO 3.2 CONT
+% \begin{figure}[H]
+%     \centering
+%     \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
+%     \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario-homeless.png}\\
+%     \fonte{Elaborada pelo autor.}
+%     \label{fig:use-case-usuario}
+% \end{figure}
+
 \begin{figure}[H]
     \centering
     \caption[Caso de Uso - Organizador e Moderador]{Caso de Uso - Organizador e Moderador}
-    \includegraphics[width = 0.7\linewidth]{figs/03-descricao-projeto/use-case-moderador-organizador.png}\\
+    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-orgmod.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:use-case-moderador-organizador}
 \end{figure}
 
-Uma vez que definimos tanto o tipo Evento, quanto os atores do sistema, podemos entender como eles se relacionam, por meio de um diagrama de classe, representado  na \autoref{fig:diagrama-classe}.
+Uma vez que definimos tanto o tipo Evento, quanto os atores do sistema, podemos entender como eles se estruturam e relacionam, e sintetizar em um diagrama Entidade-Relacionamento, representado na \autoref{fig:diagrama-banco}.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama Entidade-Relacionamento]{Diagrama Entidade-Relacionamento}
+    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-banco.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-banco}
+\end{figure}
+
+Também é possível definir um diagrama de classes, que representa como estes dados vão ser implementados na aplicação, representado na \autoref{fig:diagrama-classe}. 
+Vale notar que algumas das entidades neste diagrama se referem à outros aspectos da aplicação além do descrito nessta seção. 
+Por exemplo, as classes \emph{JWTUser} e \emph{UsuarioAutenticado}, bem como seus relacionamentos com \emph{UsuarioAutenticado}, tomam esta forma em razão da estratégia de autenticação de usuário adotada pela plataforma. 
 
 \begin{figure}[H]
     \centering
     \caption[Diagrama de Classe]{Diagrama de Classe}
-    \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/diagrama-classe.png}\\
+    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-classe.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:diagrama-classe}
 \end{figure}
@@ -71,14 +115,12 @@ De maneira sucinta, podemos dividir a plataforma nas seguintes telas principais,
     % \resizebox{\textwidth}{!}{%
         \begin{tabular}{|c|c|c|}
             \hline
-            \textbf{Usuário} & \textbf{Organização} & \textbf{Moderador} \\ 
+            \textbf{Pessoa} & \textbf{Organizador} & \textbf{Moderador} \\ 
             \hline
-            Página Principal & \makecell{Listagem de Eventos \\ (para Gestão)} & \makecell{Listagem de Eventos \\ (para Análise)} \\  
-            Agenda Semanal & Criação de Eventos & \makecell{Página de Evento \\ (para Análise)} \\    
-            Agenda Mensal & \makecell{Página de Evento \\ (para Gestão)} &  \\    
-            Agenda Diária &  &  \\    
-            Busca de Eventos &  &  \\    
-            Página de Evento &  &  \\
+            Página Principal                              & Criação de Eventos                            & Análise de eventos                           \\  
+            \makecell{Agenda Semanal  e \\ Agenda diária} & \makecell{Perfil com \\ Listagem de Eventos}  & \makecell{Perfil com \\ Listagem de Eventos} \\    
+            Busca de Eventos                              & \makecell{Atualização e \\ Edição de Eventos} &                                              \\    
+            Página de Evento                              &                                               &                                              \\  
             \hline
         \end{tabular}
     % }
@@ -142,7 +184,7 @@ Deve-se notar que boa parte do público em potencial do serviço utilizaria apar
 \section{Procedimentos de Validação}
 \label{sec.procedimentos-validacao}
 
-% TODO: duvida testes
+% TODO: TESTES
     
 Para garantir o funcionamento do sistema, ele será testado durante e após o seu desenvolvimento, empregando a estratégia da Pirâmide de Testes, onde cada nível da pirâmide corresponde a um tipo de teste a ser executado na aplicação. Com essa estrutura, é possível testar a aplicação de maneira integral, garantindo que tudo esteja funcionando em todos os níveis possíveis.
 
