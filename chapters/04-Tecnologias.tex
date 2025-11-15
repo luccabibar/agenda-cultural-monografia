@@ -1,0 +1,84 @@
+\chapter{Tecnologias Utilizadas}
+\label{ch.tecnologias-utilizadas}
+    
+Dado a natureza do projeto, seus objetivos e seus requisitos, é possível definir como ele será implementado, assim como as tecnologias escolhidas para tal. 
+
+Em termos de arquitetura, a mais adequada é a Cliente-Servidor: ela permite que um \emph{Backend} (denominado Servidor) receba, armazene, processe, gerencie e sirva dados, de acordo com pedidos realizados por um \emph{Frontend} (denominado Cliente), através de requisições HTTP feitas através da internet. 
+Esta arquitetura é vantajosa pois desacopla o \emph{Frontend} do \emph{Backend}, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. 
+O único co-requisito entre as duas partes é que elas sejam capazes de se comunicar por meio de requisições HTTP, o que não é uma funcionalidade incomum. 
+Adicionalmente, ela permite que diversos Clientes diferentes se comuniquem com o mesmo Servidor, flexibilizando a natureza do Cliente, que pode ser desde uma aplicação web, até um aplicativo mobile.
+
+A fim de garantir a segurança no credenciamento dos usuários, foi adotada uma estratégia de autenticação baseada em \emph{JSON Web Tokens}, ou JWTs.
+Para realizar o login, o usuário deve enviar suas credenciais (e-mail e senha, por exemplo) para o servidor.
+Uma vez que os dados são validados, o servidor os codifica em um Token, utilizando uma chave privada, e envia o envia de volta para o cliente.
+Desta forma, o cliente pode acessar endpoints protegidos ao enviar o Token junto à requisição, para se identificar.
+
+Quando o servidor recebe uma requisição em um endpoint protegido, ele verifica a presença do Token de autenticação, e então o decodifica, assim acessando os dados originalmente armazenados.
+Desta forma, o servidor possui uma maneira segura de prover um meio de autenticação ao cliente, uma vez que apenas ele é capaz de codificar e decodificar o Token.
+Note que o cliente em nenhum momento precisa se preocupar em processar o Token, uma vez que ele age apenas como uma chave de autenticação para ele.
+
+Para o \emph{Backend} do projeto, foi empregado a linguagem de programação Java, junto ao \emph{framework} Springboot. 
+Ele permitiu o desenvolvimento, de maneira robusta e confiável, de um meio para os Clientes acessarem as funcionalidades do Servidor, de maneira padronizada por uma API REST.
+O \emph{framework} oferece amplo apoio para aplicações REST, como controladores REST, filtros de requisições HTTP, e acesso ao banco de dados via JDBC. Utilizando o filtro de requisições, foi possível implementar uma boa solução de autenticação de usuários via JWT, que foi a abordagem escolhida para esta tarefa. 
+
+Para armazenar os dados de usuários de dos eventos, foi escolhido um banco de dados relacional tradicional, o PostgreSQL, devido a sua fácil utilização tanto com o Springboot quanto com a própria arquitetura Cliente-Servidor.
+
+Para o \emph{Frontend}, o Cliente foi implementado como uma aplicação Web, a princípio. Este tipo de aplicação funciona bem na arquitetura Cliente-Servidor, visto que a própria natureza dela implica numa ênfase em requisições HTTP. Utilizando o \emph{framework} Angular, que emprega a linguagem TypeScript, é possível desenvolver uma aplicação robusta para navegadores web. Adicionalmente, aplicações utilizando Angular costumam se comportar bem em navegadores para aparelhos celulares, tornando-se assim uma escolha flexível.
+
+Ambas as linguagens escolhidas são fortemente tipadas, e oferecem apoio à abordagem de programação orientada à objeto. Isto garante a plena comunicação entre cada componente da aplicação, e garante que ela se comporte exatamente como esperado, facilitando o desenvolvimento do projeto.
+
+Deve-se notar que boa parte do público em potencial do serviço utilizaria aparelhos celulares para acessá-lo. Com isso em mente, também é possível desenvolver um aplicativo de celular que agisse como um Cliente. Soluções PWAs, ou \emph{Progressive Web Apps}, são as ideais, visto que permitem desenvolver aplicativos mobile utilizando ferramentas usadas no desenvolvimento web tradicional. No caso do Ionic, um \emph{framework} PWA, é empregado o próprio Angular, assim justificando ainda mais a escolha deste, visto que isto tornaria as aplicações web e mobile semelhantes, e reduziria o atrito no desenvolvimento paralelo das duas.
+    
+% TODO MOVER / REMOVE
+
+% \section{Procedimentos de Validação}
+% \label{sec.procedimentos-validacao}
+
+% % TODO: TESTES
+    
+% Para garantir o funcionamento do sistema, ele será testado durante e após o seu desenvolvimento, empregando a estratégia da Pirâmide de Testes, onde cada nível da pirâmide corresponde a um tipo de teste a ser executado na aplicação. Com essa estrutura, é possível testar a aplicação de maneira integral, garantindo que tudo esteja funcionando em todos os níveis possíveis.
+
+% A base da pirâmide são os Testes Unitários, onde cada componente da aplicação é testado de maneira individual, verificando se o seu comportamento, em isolação, é o esperado. São os testes mais baratos de serem implementados e garantem o funcionamento individual de cada peça do sistema. Eles podem ser implementados a nível de componentes, classes ou funções.
+
+% O meio da pirâmide corresponde aos Testes de Integração, que irão averiguar como os componentes, já testados pelos Testes Unitários, se comunicam entre si. É nesta etapa que são testadas conexões e integrações entre serviços, clientes e servidores e diferentes blocos da aplicação, bem como o funcionamento de páginas como um todo. Portanto, são realizados a nível de páginas, ou de  \emph{endpoints} completos.
+
+% O topo desta pirâmide diz respeito aos Testes Ponta-a-Ponta (ou End to End, E2E), que são os mais complexos. Eles testam a aplicação seguindo uma abordagem de Caixa-Preta, ou seja, desconsiderando o funcionamento mecânico da aplicação e verificando apenas o sistema como ele é apresentado para o usuário. Em outras palavras, é um teste que envolve utilizar a aplicação tal qual ela foi projetada para, em busca de erros, bugs e inconsistências. Devido à sua natureza, testes E2E são realizados em nível de aplicação.
+   
+% \section{Produto Desenvolvido}
+% \label{sec.produto-desenvolvido}
+
+% Durante o período em que ocorreram as disciplinas TCC 1 e 2, foi desenvolvido um Produto Mínimo Viável, e totalmente funcional, desta aplicação. Uma plataforma que permite às entidades organizadoras de eventos os divulgarem, e, aos usuários, encontrarem eventos relevantes para participarem.  
+
+% O componente \emph{backend} desenvolvido conta com diversos \emph{endpoints}, por onde é possível acessar as funcionalidades do Servidor. 
+% Os dois principais grupos de \emph{endpoints} são relacionados aos Eventos, e aos Usuários.
+% Por meio deles, é possível tomar todas as ações da aplicação: 
+% Criar uma conta e fazer login se referem aos \emph{endpoints} de Usuarios. Já buscar e consumir eventos, bem como criar, editar, moderar e excluí-los, são funcionalidades dos \emph{endpoints} de eventos.
+% O compoente backend também conta com um sistema de autenticação via JWT, garantindo que apenas os usuários adequados tem acesso à determinados recursos protegidos.
+
+% O componente \emph{frontend} desenvolvido age como o Cliente que acessa os dados do Servidor, implementando páginas na web que utilizam suas funcionalidades. 
+% Ele acessa essas funcionalidades por meio de requisições HTTP aos \emph{endpoints} do Servidor, por meio de um serviço que oferece funcionalidades de HTTP.
+% Como usuário, é possível procurar eventos por meio de filtros de busca, e ver seus detalhes além de conseguir visualizar todos os eventos que ocorrem em um determinado dia ou semana, por meio de uma agenda. 
+% Como um Organizador, é possível criar, editar e excluir eventos, e como um Moderador, é possível analisar e moderar os eventos.
+% É possível se identificar por meio de um sistema de login, que mantém o usuário ativo por meio de \emph{cookies} de navegador.
+
+% A identidade visual da adotada, embora não seja a final, reflete a visão da plataforma, visando ser sóbria, mas descontraída. Assim, ela emprega  um design claro e colorido. 
+
+% % TODO: figuras
+
+% As seguintes figuras, \autoref{fig:captura-busca} e \autoref{fig:captura-evento}, são capturas das respectivas telas, mencionadas no parágrafo acima.
+
+% \begin{figure}[H]
+%     \centering
+%     \caption[Captura - Tela de Busca]{Captura - Tela de Busca}
+%     \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/captura-busca.png}\\
+%     \fonte{Elaborada pelo autor.}
+%     \label{fig:captura-busca}
+% \end{figure}
+
+% \begin{figure}[H]
+%     \centering
+%     \caption[Captura - Tela de Evento]{Captura - Tela de Evento}
+%     \includegraphics[width = 1.0\linewidth]{figs/03-descricao-projeto/captura-evento.png}\\
+%     \fonte{Elaborada pelo autor.}
+%     \label{fig:captura-evento}
+% \end{figure}
