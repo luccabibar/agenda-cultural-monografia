@@ -1,0 +1,109 @@
+\chapter{Resultados}
+\label{ch.resultados}
+
+Durante o ciclo de desenvolvimento deste trabalho, foi desenvolvido a aplicação descrita nas seções anteriores, que esta seção seção abordará.
+
+Conforme especificado, a aplicação é composta de duas partes, o \emph{Backend}, que age como o Servidor, e o \emph{Frontend}, que age como o Cliente. 
+Em um cenário normal, um servidor executa a porção \emph{Backend} da aplicação, e serve o \emph{Frontend} ao usuário, que o executa em seu dispositivo.
+Utilizando um navegador web, é possível acessar a aplicação desta maneira.
+
+% TODO IBAGENS
+% TODO TAMBEM: AFERIR EXISTENCIA DA HOMEPAGE
+A página principal é a primeira página que um novo usuário vê, por padrão. 
+É possível identificar um cabecalho na página, que contém alguns \emph{links} para navegação, e uma barra de pesquisa.
+Ao buscar utilizando a barra de pesquisa, a aplicação navega à página de busca de evento, e realiaza uma busca usando o texto inserido.
+Note também que, ao realizar login, os \emph{links} para as páginas de login e cadastro são substitídos por elementos relacionados ao usuário, como um botão para realizar logout, um \emph{link} para a página de perfil, e um \emph{link} para a página de criar evento, no caso de um usuário Organizador.
+
+% TEXTO HOMEPAGE
+
+A página agenda é composta de dois modos diferentes: agenda diária e agenda semanal. 
+A agenda diária é o modo inicial desta página, mas é possivel alterná-los por meio de botões.
+
+No modo de agenda diária, é apresentado a data atual e uma grade, contendo todos os eventos que acontecem neste dia, organizados por sua hora de início. 
+Nesta grade, são disposto ao longo de 24 colunas, correspondentes as 24 horas do dia.
+Se alguma coluna contém eventos demais, é exibido um botão, que leva para a página de busca de eventos, onde é realizado uma busca que mostra todos os eventos realizados naquele horário.
+
+Ao alternar para o modo de agenda semanal, é apresentado uma outra grade, onde são apresentados todos os eventos que ocorrem na semana da data atual, e também o domingo da próxima semana, a fim de exibir todo o final de semana.
+Na grade da agenda semanal, cada coluna representa um dia da semana, e cada linha representa um horário.
+Então, cada evento é exibido em uma célula correspondente a sua data e horário.
+De maneira similar à agenda diária, uma célula que contém eventos demais exibe um botão, que leva para a página de busca de eventos, onde é realizado uma busca que mostra todos os eventos realizados naquela data e horário.
+Adicionalmente, clicar na data de uma das colunas leva à agenda diária daquele dia. 
+
+Clicar nos eventos apresentados nesta página dirige o usuário à página daquele evento. 
+Há também duas caixas de seleção, onde é possível filtrar os eventos exibidos nesta página por suas categorias ou regiões. 
+Este filtro tem efeito em ambos os modos.
+
+A página de buscas permite buscar diretamente por eventos, passados e futuros, utilizando diversos filtros.
+Além de navegar diretamente para esta página, é possível acessar ela por meio da barra de pesquisa, no cabecalho da aplicação, e também pela página de agenda.
+Navegar para esta página desta maneira faz com que ela realize uma operação de busca com os parâmetros configurados pela página de onde se foi navegado.
+Na coluna esquerda desta página, estão localizados diversos filtros: busca por texto (referente ao título e à descrição de um evento), por categoria, por região, por data, e por horário.
+
+Vale notar que os filtros de horário se referem apenas ao horário do evento, e não a sua data. 
+Da mesma forma, os filtros de data não levam em consideração o horário de um evento.
+Este comportamento é deliberado, para possibilitar a filtragem de acordo com uma intervalo de horários e um intervalo de dias simultaneamente, ao invés de um grande intervalo de um momento até outro.
+
+Realizar uma busca nesta página exibe uma lista de resultados, eventos cujas características se enquadram nos parâmetros informados pelo usuário.
+Clicar em qualquer evento navega para a página de evento, onde são exibidas informações referentes a ele.
+
+A página de evento, que é acessada por meio de divesas outras páginas da aplicação, exibe as informações de um determinado evento.
+Além do nome do evento, são exibidos sua descrição, categoria, uma imagem ilustrativa, um \emph{link} para mais informações, a data e horário de início e de término do evento, sua região, e seu endereço.
+Também são exibidas as atualizações deste evento, pequenos textos anexados ao evento, que descrevem eventuais atualizações sobre o evento (como, por exmeplo, um comunicado de troca de local).
+É possível compartilhar o URL da página, direto do navegador, uma vez que a identificação do evento está presente nele. 
+
+A última página acessível sem precisar realizar um login é justamente a página de login e cadastro.
+Ambos os mecanismos de login e cadatro estão presentes nesta página, simultaneamente, a fim de evitar situações onde o usuário tenta acessar o cadastro e acaba acessando o login, ou vice-versa.
+Ainda assim, a página destaca o componente de login ou cadastro, dependendo de qual \emph{link} foi clicado.
+
+O componente de cadastro contém um formulário, com os campos nome, email, e senha, e enviá-lo efetua a criação de um novo usuário, do tipo Pessoa, no sistema. Também existe um botão que indica um modo de cadastro como Organizador. 
+Clicá-lo faz com que enviar este formulário apresente um novo campo para um CPF ou CNPJ, e enviá-lo cria um novo usuário do tipo Organizador, ao invés de Pessoa.
+
+O componente de login, presente na mesma página, permite realizar a operação de autenticação.
+Enviar este formulário com um e-mail e senha válidos tem como resposta os dados do usuário referente, bem como um \emph{Token}, para que se autenticar ao acessar funcionalidades restritas.
+Uma vez realizado o login, é possível acessar novas páginas, que requerem que o usuário esteja autenticado.
+O conjunto de páginas disponibilizado para cada usuário varia de acordo com o seu tipo.
+
+A página de perfil está disponível para todos os usuários autenticados, porém se comporta de maneira ligeiramente diferente, dependendo do tipo de usuário que a está acessando.
+Todos os usuários podem acessar a página e conferir dados do seu perfil.
+
+Acessar a página de perfil como um Organizador, além de exibir os dados do usuário, exibe também uma lista, de todos os eventos criados por este Organizador.
+Para cada evento, são exibidas suas informações básicas, o seu status, e botões, que permitem editar e exclui-lo.
+É possível ainda filtrar essa lista, pelo status dos eventos, para facilitar a visualização.
+
+A página de edição de eventos, que permite editar ou atualizar um determinado evento, é acessível somente ao Organizador responsável pelo evento.
+Esta página é dividida em dois componentes, um para adicionar atualizações ao evento, e outro para realizar uma edição no evento.
+Eles estão agrupados nesta página porque ambos se referem a operações semelhantes: alterar o estado do evento.
+
+O Componente de atualização de evento possui um formulário que, ao preenche-lo com um título e uma descrição, e envia-lo, adiciona uma atualização ao evento referente.
+É possível ver esta atualização na página deste evento.
+
+O Componente de edição, também presente nesta página, possui um formulário, com campos de descrição, link de mais informações, imagem, data e hora de início e fim, região, e endereço, todos referentes à atributos do evento. 
+Durante o carregamento da página, estes campos são preenchidos com os dados originais deste evento.
+Alterar algum campo deste formulário o marca com um tom de destaque, simbolizando que já nao reflete mais o valor original do evento.
+O envio de dados deste formulário é constituido apenas pelos campos que foram alterados pelo usuário.
+Vale notar que editar um evento o coloca de volta no estado de análise, e precisando que um Moderador o analise novamente e atualize seu status de acordo. 
+
+Já a página de exclusão de eventos contém apenas alguns botões: voltar, editar e excluir, que realizam ações sob um determinado evento. 
+Esta página também só é acessível ao Organizador deste evento.
+O botão de voltar direciona o usuário de volta à página de perfil, e o botão de editar o direcona à página de edição deste mesmo evento.
+O botão de excluir, por sua vez, elimina este evento da aplicação, tornando-o inacessível.
+
+Por fim, a última nova págin a disponível a um Organizador é a de novo evento. 
+Ela contém um formulário que coleta todas as informações necessárias para criar um novo evento, que são um nome, uma descrição, uma imagem ilustrativa, sua categoria, um link para mais informações, uma data e horário para início e término, o endereço e a região onde é realizado.
+Ao preencher todos os dados de maneira válida e enviar o formulário, um novo evento é criado, mas não é imediatamente acessível: a princípio, possui um status de em análise, e um moderador deve analisar e aprová-lo para que possa aparecer na aplicação normalmente.
+Todo evento, ao ser criado, tem a ele um Moderador designado automaticamente.
+
+Ao fazer login como Moderador, é possível acessar a página de perfil e conferir que, além dos dados de usuário, é também exibida uma lista de eventos.
+Os eventos desta lista são aqueles que tem este usuário como Moderador designado.
+Nesta lista, além de informações básicas de cada evento, está seu status, e um botão, que permite realizar a análise do evento, caso o mesmo tenha o status em análise.
+A lista está separada entre eventos já analisado e que devem ser analisa-dos. 
+
+A página de análise de eventos é acessível ao Moderador designado de um determinado evento, por meio de seu perfil.
+Nesta página, são exibidos todos os dados de um evento que está em análise, semelhante à página de eventos, de maneira que o Moderador possa o analisar.
+Ao fim da página, há dois botões, que alteram o status deste evento para aprovado ou reprovado, além de um terceiro botão que leva de volta ao perfil.
+Aprovar um evento significa que agora ele estará visível para todos os usuários da aplicação, enquanto reprovar um evento faz com que ele não fique disponível a outros usuários, exceto ao Organizador, que pode editá-lo para que o evento entre em análise novamente.
+O julgamento do status de um evento, realizado pelo moderador, deve ser realizado de acordo com os termos de uso da plataforma.
+
+Finalmente, existe uma página para qualquer URL não previsto pela aplicação.
+Esta página também é exibida quando se tenta acessar um evento que não pode ser encontrado, ou quando se tenta acessar uma página restrita.
+
+Falta as imagens de cada tela po eu vo por na proxima versao kkkkk
