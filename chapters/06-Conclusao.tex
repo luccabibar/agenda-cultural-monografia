@@ -15,3 +15,59 @@ Desta forma, os organizadores de eventos teriam um aumento em seu público e em 
 % Este projeto mira ambiciosamente em se tornar a maneira mais usual de se consultar as atividades e eventos de uma determinada região, de maneira que os usuários utilizem-a como a primeira alternativa ao invés de navegar em páginas de redes sociais ou colunas de jornais locais. 
 % A plataforma apresentaria dados de eventos de toda natureza, acompanhado de ferramentas para buscar, filtrar e organizá-los de maneira sucinta e simples. 
 % Também agiria como uma plataforma para qualquer organização divulgar seu evento, não dependendo assim da redação dos jornais e mídias locais.
+
+\section{Dificuldades encontradas}
+\label{sec.dificuldades-encontradas}
+
+Duran
+
+\section{Trabalhos futuros}
+\label{sec.trabalhos-futuros}
+
+Embora o trabalho desenvolvido tenha atingido um estado satisfatório, ainda há espaço para desenvolver mais ideias, implementar melhorias e novas funcionalidades.
+
+Nenhum sistema opera em um vácuo.
+Isso significa que, para um eventual lançamento da plataforma desenvolvida, convém realizar uma análise de mercado profunda, para determinar a melhor estratégia de lançamento possível.
+Isto inclui também uma campanha de marketing para a plataforma, para alcançar usuários e entidades organizadoras, bem como uma estratégia de monetização, levando em consideração os custos operacionais e maneiras de adquirir receita para sustentar sua operação e manutenção.
+
+Outro componente importante para o funcionamento da plataforma são os termos de uso, documento que nortearia os Moderadores ao analisar os eventos da plataforma.
+Ele deve ser elaborado com cuidado, a fim de garantir que o conteúdo da aplicação tenha qualidade, e que ela não seja pervertida por usuários maliciosos.
+
+Conforme discutido neste trabalho, o desenvolvimento de uma versão que seja executável em aparelhos celulares e tablets tornaria a plataforma ainda mais acessível e prática.
+Estar disponível neste tipo de aparelho tornaria a plataforma disponível a um público bem maior, e também possibilitaria acessá-la em momentos nos quais um computador com um e navegador e acesso à internet não estão facilmente acessíveis (como, por exemplo, enquanto se está na rua).
+
+No que se refere à acessibilidade, a plataforma ainda não está de acordo com normas regulamentadoras sobre acessibilidade digital.
+A fim de tornar a plataforma devidamente acessível à pessoas com deficiência, devem ser implementadas medidas que tornem o \emph{website} acessível. 
+Estas medidas incluem, mas não estão limitadas a: um modo de alto contraste; suporte para libras; uso correto do texto alternativo; e legibilidade otimizada.
+
+Visto que a aplicação é dividida entre cliente e servidor, seria necessário desenvolver apenas um novo componente cliente, que execute em dispositivos móveis, responsável por acessar os dados do servidor e apresentá-los ao usuário.
+Adicionalmente, as tecnologias utilizadas no desenvolvimento do cliente para navegador web permitem que uma boa porção do código elaborado seja reaproveitado no desenvolvimento de um novo cliente, assim reduzindo o custo de desenvolvimento.
+
+A principal melhoria ao sistema que poderia ser desenvolvida seria o emprego de uma integração com o Google Maps.
+O serviço de mapas oferecido pela Google permite a interação com um mapa virtual, onde é possível navegar, escolher endereços, marcar e exibir lugares específicos.
+A implementação desta integração consistiria em recolher um lugar no mapa ao cadastrar um novo evento, correspondente ao endereço do mesmo, e também na exibição deste lugar na página de eventos.
+Desta maneira, os usuários podem conferir o endereço do evento em um mapa, definirem uma rota de sua localização ao local do evento, e todas as outras funcionalidades que o Google Maps já oferece.
+
+Outras funcionalidades envolvendo o serviço de mapas inclúem a filtragem de eventos por geolocalização na página de busca, e também uma nova página, contendo um mapa onde se exibem eventos que acontecem numa determinada região.
+
+% AFERIR HOMEPAGE
+Embora a página de agenda cumpra este papel, o desenvolvimento de uma \emph{homepage}, com o intuito de ser a página principal da aplicação, pode torná-la mais agradavel de se utilizar. 
+A mesma poderia exibir eventos em destaque, e eventos relevantes ao usuário, levando em conta a data, hora e região de acesso. 
+Ter uma página assim como a primeira que um novo usuário encontraria deve transmitir a ideia de como a aplicação e seus eventos funcionam, tornando o \emph{onboarding} mais suave e aumentando as chances do usuário voltar a acessar a aplicação.
+
+Ao realizar o cadastro, a conta do usuário é automaticamente ativada. 
+Idealmente, seria implementado um sistema de verificação de email para realizar o login, bem como um sistema de recuperação de senha, caso o usuário a esqueça.
+
+Ao cadastrar um evento, seria ideal recolher a classificação indicativa do mesmo, e utilizar este parâmetro como filtro nas páginas de busca de eventos e agenda de eventos. 
+Esta é uma informação importante especialmente para pais e responsáveis, e ter mais este atributo relacionado aos eventos tornaria a experiência deste grupo ainda melhor.
+
+Em relação aos atributos de um evento, permitir o upload de mais imagens, imagens maiores, e títulos e descrições mais longas podem tornar o uso das páginas de criação e edição de eventos mais flexível e agradável aos organizadores, tornando os eventos mais expressivos e detalhados.
+
+Tanto a solução de armazenamento de imagens, quanto o mecanismo de designação de moderadores a eventos foram desenvolvidas com a intenção de serem melhoradas conforme a aplicação crescer e escalar.
+Mais especificamente, o armazendamento de imagens é feito no próprio servidor, mas o serviço que gerencia o armazenamento pode ser substituído por um novo serviço, que utilize de armazenamento em nuvem, por exemplo.
+De maneira similar, a função que atribui um moderador à um evento o faz de maneira aleatória, mas pode ser substituída para realizar uma escolha mais informada.
+Estas funcionalidades foram desenvolvidas tendo em mente o princípio do baixo acoplamento, o que significa que podem ser alteradas sem comprometer o funcionamento de outras partes da aplicação.
+Isso não significa que estas duas funcionalidades foram implementadas de maneira inadequada, mas sim que elas funcionam para uma escala específica da aplicação.
+
+Ao longo da aplicação, cabem diversas pequenas otimizações, que tornariam a experiência de utilização mais agradável.
+Estas inclúem: uma maneira de pré-visualizar a página de evento, a partir das páginas de novo evento e editar evento; deixar registrado preferências de usuários com filtros na página de agenda de eventos, a fim de mostrar eventos mais relevantes; e oferecer uma opção de ignorar eventos já passados na página de busca de eventos.
