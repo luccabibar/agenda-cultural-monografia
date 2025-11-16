@@ -19,7 +19,31 @@ Desta forma, os organizadores de eventos teriam um aumento em seu público e em 
 \section{Dificuldades encontradas}
 \label{sec.dificuldades-encontradas}
 
-Duran
+Desenvolvimento de software é um processo que dificilmente ocorre sem intempéries. 
+
+Um desafio relevante encontrado foi em relação à tecnologia utilizada para desenvolver o componetne \emph{backend} da aplicação.
+Inicialmente, foi escalado a linguagem de programação Python, junto do \emph{framework} Flask, para cumprir este papel.
+O motivo da escolha se deve à facilidade inicial de desenvolvimento com estas tecnologias.
+Python é uma linguagem não-tipada, o que torna o desenvolvimento veloz, a princípio.
+De maneira similar, Flask é um \emph{framework} inicialmente fácil de se entender, também habilitando o desenvolvimento ágil da aplicação.
+Um protótipo inicial da aplicação utilizando estas tecnologias chegou a ser desenvolvido.
+
+Entretando, essas qualidades deixaram de valer a pena conforme o projeto crescia.
+A ausência de tipos tornava o desenvolvimento cada vez mais lento, uma vez que não se tinha segurança sobre a maneira como os dados transitavam entre os componentes, o que tornava o desenvolvimento mais difícil e implicava em diversas verificações de integridade de dados.
+Adicionalmente, a abordagem da linguagem para importar outros scripts da aplicação tornaram a organização e estruturação da aplicação incômodas, requerindo burocracia adicional para transformar arquivos em pacotes importáveis.
+
+Após o desenvolvimento do protótipo, foi ponderado com muita cautela a possibilidade de descartar o código já desenvolvido em python, para implementar um novo \emph{backend}, utilizando uma tecnologia diferente.
+A principal solução cogitada foi a linguagem Java, junto ao \emph{framework} Springboot.
+As restrições e burocracias trazidas por esta solução são justamente sua maior força: elas incentivam um desenvolvimento estruturado e consistente, garantindo que seja possível navegar e entender projetos complexos.
+A linguagem Java, por sua vez, é uma linguagem tipada, o que garante a consistência de dados entre os componentes.
+Adicionalmente, o springboot oferece soluções para acesso ao banco de dados e para autenticação por meio de filtro de requisições, o que tornou o desenvolvimento destes processos mais rápido e confiável. 
+
+Depois deste período de estudo, seguido de um breve período de aprendizagem, foi consumada a escolha desta ferramenta como a que seria utilizada para desenvolver o \emph{backend} do projeto.
+Apesar do contratempo de ter de reimplementar uma porção do trabalho, somado ao processo de aprendizagem da tecnologia, o desenvolvimento deste componente seguiu de maneira eficiente e consistente, permitindo a sua implementação satisfatória.
+
+O único percalço durante esta etapa foi durante o desenvolvimento do mecanismo de autenticação por filtro de requisições.
+Para sua implementação, foi necessário estudar sobre o funcionamento da ferramenta, de maneira mais profunda comparado à outras funcionalidades do \emph{framework}.
+Entretanto, uma vez que se entende como trabalhar com esta solução, os filtros se tornam uma ferramenta poderosa a ser utilizada no desenvolvimento de qualquer aplicação REST. 
 
 \section{Trabalhos futuros}
 \label{sec.trabalhos-futuros}
