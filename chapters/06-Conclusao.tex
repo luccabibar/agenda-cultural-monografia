@@ -11,7 +11,6 @@ Lançar esta plataforma para uso geral, entretanto, é um desafio, que deve ser 
 Tudo isso em prol de oferecer uma ferramenta que ajudasse as pessoas a encontrarem as atividades que tem interesse (ou até descobrir um novo!), e oferecer aos organizadores de eventos um público que aprecia os eventos que realizam. 
 Desta forma, os organizadores de eventos teriam um aumento em seu público e em sua retenção, e as pessoas que frequentam esses eventos poderiam escolher o que mais lhe agrada.
 
-
 % Este projeto mira ambiciosamente em se tornar a maneira mais usual de se consultar as atividades e eventos de uma determinada região, de maneira que os usuários utilizem-a como a primeira alternativa ao invés de navegar em páginas de redes sociais ou colunas de jornais locais. 
 % A plataforma apresentaria dados de eventos de toda natureza, acompanhado de ferramentas para buscar, filtrar e organizá-los de maneira sucinta e simples. 
 % Também agiria como uma plataforma para qualquer organização divulgar seu evento, não dependendo assim da redação dos jornais e mídias locais.
@@ -24,7 +23,7 @@ Desenvolvimento de software é um processo que dificilmente ocorre sem intempér
 Um desafio relevante encontrado foi em relação à tecnologia utilizada para desenvolver o componetne \emph{backend} da aplicação.
 Inicialmente, foi escalado a linguagem de programação Python, junto do \emph{framework} Flask, para cumprir este papel.
 O motivo da escolha se deve à facilidade inicial de desenvolvimento com estas tecnologias.
-Python é uma linguagem não-tipada, o que torna o desenvolvimento veloz, a princípio.
+Python é uma linguagem fracamente tipada, o que torna o desenvolvimento veloz, a princípio.
 De maneira similar, Flask é um \emph{framework} inicialmente fácil de se entender, também habilitando o desenvolvimento ágil da aplicação.
 Um protótipo inicial da aplicação utilizando estas tecnologias chegou a ser desenvolvido.
 
@@ -35,7 +34,7 @@ Adicionalmente, a abordagem da linguagem para importar outros scripts da aplica�
 Após o desenvolvimento do protótipo, foi ponderado com muita cautela a possibilidade de descartar o código já desenvolvido em python, para implementar um novo \emph{backend}, utilizando uma tecnologia diferente.
 A principal solução cogitada foi a linguagem Java, junto ao \emph{framework} Springboot.
 As restrições e burocracias trazidas por esta solução são justamente sua maior força: elas incentivam um desenvolvimento estruturado e consistente, garantindo que seja possível navegar e entender projetos complexos.
-A linguagem Java, por sua vez, é uma linguagem tipada, o que garante a consistência de dados entre os componentes.
+A linguagem Java, por sua vez, é uma linguagem fortemente tipada, o que garante a consistência de dados entre os componentes.
 Adicionalmente, o springboot oferece soluções para acesso ao banco de dados e para autenticação por meio de filtro de requisições, o que tornou o desenvolvimento destes processos mais rápido e confiável. 
 
 Depois deste período de estudo, seguido de um breve período de aprendizagem, foi consumada a escolha desta ferramenta como a que seria utilizada para desenvolver o \emph{backend} do projeto.
@@ -43,7 +42,7 @@ Apesar do contratempo de ter de reimplementar uma porção do trabalho, somado a
 
 O único percalço durante esta etapa foi durante o desenvolvimento do mecanismo de autenticação por filtro de requisições.
 Para sua implementação, foi necessário estudar sobre o funcionamento da ferramenta, de maneira mais profunda comparado à outras funcionalidades do \emph{framework}.
-Entretanto, uma vez que se entende como trabalhar com esta solução, os filtros se tornam uma ferramenta poderosa a ser utilizada no desenvolvimento de qualquer aplicação REST. 
+Entretanto, uma vez que se entende como trabalhar com esta solução, os filtros se tornam uma ferramenta poderosa a ser utilizada no desenvolvimento de qualquer aplicação estilo REST. 
 
 \section{Trabalhos futuros}
 \label{sec.trabalhos-futuros}
