@@ -148,6 +148,7 @@
 \newcommand{\apendicename}{AP\^ENDICE}
 \newcommand{\apendicesname}{Ap\^endices}
 \newcommand{\orientadorname}{Orientador:}
+\newcommand{\orientadoraname}{Orientadora:}
 \newcommand{\coorientadorname}{Coorientador:}
 \newcommand{\folhadeaprovacaoname}{Folha de aprova\c{c}\~ao}
 \newcommand{\resumoname}{Resumo} 
@@ -726,6 +727,14 @@
 \providecommand{\imprimirorientadorRotulo}{}
 \providecommand{\imprimirorientador}{}
 \newcommand{\orientador}[2][\orientadorname]%
+  {\renewcommand{\imprimirorientadorRotulo}{#1}%
+   \renewcommand{\imprimirorientador}{#2}}
+
+   
+% Comandos de dados - orientadora
+\providecommand{\imprimirorientadorRotulo}{}
+\providecommand{\imprimirorientador}{}
+\newcommand{\orientadora}[2][\orientadoraname]%
   {\renewcommand{\imprimirorientadorRotulo}{#1}%
    \renewcommand{\imprimirorientador}{#2}}
 
