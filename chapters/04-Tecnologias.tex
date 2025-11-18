@@ -1,7 +1,7 @@
 \chapter{Tecnologias Utilizadas}
 \label{ch.tecnologias-utilizadas}
     
-Dado a natureza do projeto, seus objetivos e seus requisitos, é possível definir como ele será implementado, assim como as tecnologias escolhidas para tal. 
+Dado a natureza da aplicação projetada, seus objetivos e seus requisitos, é possível definir como ele será implementado, assim como as tecnologias escolhidas para tal. 
 
 Em termos de arquitetura, a mais adequada é a Cliente-Servidor: ela permite que um \emph{Backend} (denominado Servidor) receba, armazene, processe, gerencie e sirva dados, de acordo com pedidos realizados por um \emph{Frontend} (denominado Cliente), através de requisições HTTP feitas através da internet. 
 Esta arquitetura é vantajosa pois desacopla o \emph{Frontend} do \emph{Backend}, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. 
@@ -17,7 +17,7 @@ Quando o servidor recebe uma requisição em um endpoint protegido, ele verifica
 Desta forma, o servidor possui uma maneira segura de prover um meio de autenticação ao cliente, uma vez que apenas ele é capaz de codificar e decodificar o Token.
 Note que o cliente em nenhum momento precisa se preocupar em processar o Token, uma vez que ele age apenas como uma chave de autenticação para ele.
 
-Para o \emph{Backend} do projeto, foi empregado a linguagem de programação Java, junto ao \emph{framework} Springboot. 
+Para o \emph{Backend}, foi empregado a linguagem de programação Java, junto ao \emph{framework} Springboot. 
 Ele permitiu o desenvolvimento, de maneira robusta e confiável, de um meio para os Clientes acessarem as funcionalidades do Servidor, de maneira padronizada por uma API em estilo REST.
 O \emph{framework} oferece amplo apoio para aplicações estilo REST, como controladores REST, filtros de requisições HTTP, e acesso ao banco de dados via JDBC. Utilizando o filtro de requisições, foi possível implementar uma boa solução de autenticação de usuários via JWT, que foi a abordagem escolhida para esta tarefa. 
 
@@ -25,7 +25,7 @@ Para armazenar os dados de usuários de dos eventos, foi escolhido um banco de d
 
 Para o \emph{Frontend}, o Cliente foi implementado como uma aplicação Web, a princípio. Este tipo de aplicação funciona bem na arquitetura Cliente-Servidor, visto que a própria natureza dela implica numa ênfase em requisições HTTP. Utilizando o \emph{framework} Angular, que emprega a linguagem TypeScript, é possível desenvolver uma aplicação robusta para navegadores web. Adicionalmente, aplicações utilizando Angular costumam se comportar bem em navegadores para aparelhos celulares, tornando-se assim uma escolha flexível.
 
-Ambas as linguagens escolhidas são fortemente tipadas, e oferecem apoio à abordagem de programação orientada à objeto. Isto garante a plena comunicação entre cada componente da aplicação, e garante que ela se comporte exatamente como esperado, facilitando o desenvolvimento do projeto.
+Ambas as linguagens escolhidas são fortemente tipadas, e oferecem apoio à abordagem de programação orientada à objeto. Isto garante a plena comunicação entre cada componente da aplicação, e garante que ela se comporte exatamente como esperado, facilitando o desenvolvimento do software.
 
 Deve-se notar que boa parte do público em potencial do serviço utilizaria aparelhos celulares para acessá-lo. Com isso em mente, também é possível desenvolver um aplicativo de celular que agisse como um Cliente. Soluções PWAs, ou \emph{Progressive Web Apps}, são as ideais, visto que permitem desenvolver aplicativos mobile utilizando ferramentas usadas no desenvolvimento web tradicional. No caso do Ionic, um \emph{framework} PWA, é oferecido suporte ao Angular, assim justificando ainda mais a escolha deste, visto que isto tornaria as aplicações web e mobile semelhantes, e reduziria o atrito no desenvolvimento paralelo das duas.
     
