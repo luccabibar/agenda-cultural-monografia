@@ -1,0 +1,78 @@
+\chapter{Fundamentação Teórica}
+\label{ch.fundamentacao-teorica}
+
+Neste capítulo são abordados as ferramentas, tecnologias e conceitos empregados no desenvolvimento deste trabalho.
+
+\section{Arquitetura Cliente-Servidor}
+\label{sec.cliente-servidor}
+
+De acordo com \citeonline{cliente-servidor}, a arquitetura Cliente-Servidor é um modelo computacional que facilita a comunicação entre múltiplos clientes e um único servidor. 
+Nesta configuração, diversos clientes, sejam computadores, smartphones, etc., se conectam através de uma rede (normalmente, a internet), para acessar os recursos providos por aquele servidor.
+A dinâmica entre as duas partes são de requisição-resposta, ou seja, conforme Clientes enviam requisições, o Servidor provê repostas, de acordo com o que foi especificado por cada Cliente.
+
+Esta arquitetura é vantajosa pois os componentes Cliente e Servidor estão desacoplados, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. 
+Adicionalmente, ela permite que diversos Clientes diferentes se comuniquem com o mesmo Servidor, flexibilizando a natureza do Cliente, que pode tomar as mais diversas formas.
+O único co-requisito entre as duas partes são a habilidade de se comunicar entre si, o que é suprido por protocolos de comunicação.
+Para se comunicar através da internet, um protocolo amplamente utilizado é o HTTP (definido em \cite{http-rfc}).
+
+Ao considerar os componentes de uma aplicação implementada nesta arquitetura, podemos dizer que o Cliente age como o Frontend, enquanto o Servidor age como o Backend.
+
+\section{API estilo REST}
+\label{sec.cliente-servidor}
+
+Uma API, em termos gerais, é o conjunto de regras e protocolos que permitem com que aplicações se comuniquem, de acordo com \citeonline{api}. 
+Embora este seja um conceito amplo, aplicável em diversas facetas do design de software, ele é particularmente útil em habilitar comunicação entre aplicações via rede, como a internet. 
+Quando este é o caso, normalmente se usa o protocolo HTTP, amplamente utilizado em para este fim.
+
+REST, ou \emph{REpresentational State Transfer}, é um estilo de configuração de API \cite{rest}. 
+Ele define um conjunto de regras e pricípios, a fim de tornar as aplicações, e acomunicação entre elas, mais conscisa e organizada.
+Ao contrario de outros estilos, como SOAP, onde uma determinada ação é informada via XML, as ações são determinadas na combinação entre o recurso acessao e o verbo HTTP utilizado (isto é, se informa ao recipiente o caminho até o recurso que se deseja acessar, e um verbo HTTP como GET, ou DELETE,  determina a operação realizada).
+Por fim, uma API Rest tem sempre apenas um estado, ou seja, a aplicação nao armazena nenhum tipo de dado de sessão, e toda requisição teve conter todos os dados necessários para seu processamento.
+
+Então, uma API estilo REST é um meio de comunicação entre duas partes, respeitando um conjunto de regras específico.
+Um contexto muito popular para este tipo de API é no desenvolvimento de aplicações que devem se comunicar via rede, como por exemplo, na arquitetura Cliente-Servidor
+
+\section{JSON Web Tokens}
+\label{sec.jwt}
+
+JSON Web Token, ou JWT, é um modelo especificado por \citeonline{jwt-rfc} que define uma maneira segura, compacta e autocontida de transmitir dados através de um ambiente inseguro (como, por exemplo, a internet), em forma de um objeto JSON \cite{jwt}. 
+Cada token é digitalmente assinado, o que garante que os dados possam transitar o risco de serem acessados ou distorcidos.
+
+Uma aplicação usual de JWTs é para o fim de autenticação de usuários.
+Quando um usuário faz login em um sistema, lhe é retornado um JWT, que age como sua credencial para acesso ao sistema.
+Então, o usuário informa o JWT ao sistema ao acessar recursos restritos, assim confirmando a sua identidade.
+Terceiros interessados em acessar indevidamente o sistema não o conseguirão, uma vez que não tem meios de decodificar o JWT nem tampouco criar uma réplica.
+Note que o usuário em nenhum momento precisa se preocupar com o conteúdo do Token, uma vez que ele age apenas como uma chave de autenticação para ele.
+
+\section{Banco de dados PostgreSQL}
+\label{sec.pgsql}
+
+PostgreSQL é um sistema de banco de dados relacional, desenvolvido em código aberto e gerenciado pelo The PostgreSQL Global Development Group \cite{postgresql}.
+Esta ferramenta oferece gravação, alteração e recuperação de dados, de maneira estruturada e relacional, ou seja, a maneira como os dados são armazenados permite buscar não apenas por uma entidade, mas por todo o contexto relacionado à ela.
+Além disto, o PostgreSQL implementa os princípios ACID (Atomicidade, Consistência, Isolamento, Durabilidade), um conjunto de propriedades para bancos de dados que garante a segurança e consistência ao armazenar dados. 
+
+\section{Linguagem de programação Java e Framework Springboot}
+\label{sec.java-springboot}
+
+Java é uma linguagem de programação, fortemente tipada, multiparadigma, desenvolvida pela Oracle \cite{java}.
+Ela é uma linguagem que é executada em qualquer dispositivo que suporte a sua máquina virtual, a JVM - embora o caso de uso mais comum sejam aplicações para computadores tradicionais. 
+Além de ser oferecer confiabilidade e robustez ao desenvolver com esta ferramenta, devido à tipagem forte e apoio à orientação à objeto, a linguagem já possui um grande conjunto de ferramentas e capabilidades, como APIs de acesso à banco de dados com JDBC, frameworks como o Springboot, e servidores web como o Apache Tomcat.
+
+O Springboot, por sua vez, é um framework para desenvolvimento de aplicações autônomas, baseado na plataforma Spring \cite{springboot}.
+O principal objetivo deste framework é tomar a ampla plataforma Spring, que por si só é um framework, e configurá-la de tal forma que se torne mais simples desenvolver aplicações.
+Em outras palavras, o Springboot é uma especialização do framework Spring.
+
+Embora o Springboot seja aplicável em uma variedade e finalidades, ele funciona particularmente bem como uma API estilo REST, pois oferece amplo apoio para este tipo de aplicação: controladores REST, filtros de requisições HTTP, acesso ao banco de dados via JDBC, integração com o servidor Apache Tomcat.
+
+\section{Linguagem de programação TypeScript e framework Angular}
+\label{sec.typescript-angular}
+
+TypeScript é uma linguagem de programação, multiparadigma, fortemente tipada, desenvolvida pela Microsoft \cite{typescript}.
+A principal vantagem desta ferramenta é a sua relação com a linguagem Javascript: qualquer código escrito em Typescript pode ser diretamente transpilado para Javascript, e ser executado exatamente como se espera.
+Isso significa que é possível usufruir da ubiquidade e versatilidade do Javascript, mas sem abrir mão de benefícios como tipagem forte, apoio à orientação à objetos, e checagem semântica (funcionalidades que o Javascript, notavelmente, não possui).
+O resultado é uma linguagem que pode ser utilizada em todos os contextos em que o Javascript é utilizavel (ou seja, principalmente em navegadores web, mas também em aplicações desktop, por exemplo) 
+
+O framework Angular é um framework voltado para o desenvolvimento aplicações web de página única, que é desenvolvido pela Google \cite{angular}.
+Com este framework, é possível estruturar uma aplicação web robusta rapidamente, uma vez que sua abordagem orientada à componentes torna a aplicação mais organizada e menos trabalhosa se de desenvolver.
+Além disso, o framework oferece ferramentas para lidar facilmente com alguns aspectos do desenvolvimento web: requisições HTTP, navegação e roteamento, cookies, carregamento de dados assíncronos, suporte à formulários, etc.
+Finalmente, a linguagem também se comporta bem em aparelhos mobile, mostrando-se flexível.
