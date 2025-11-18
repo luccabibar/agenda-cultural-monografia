@@ -12,15 +12,14 @@ Note que o Tipo Evento inclui uma lista de atualizações, denominada Atualizaca
 \begin{figure}[H]
     \centering
     \caption[Tipo Evento]{Tipo Evento}
-    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-classe-evento.png}\\
+    \includegraphics[width = 0.6\linewidth]{figs/diagramas/diagrama-classe-evento.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:classe-evento}
 \end{figure}
 
 % TODO 3.2 AFERIR EXISTENCIA DA HOMEPAGE
 O ator denominado Pessoa representa a interação mais básica com a aplicação: um usuário, que não precisa estar logado, que acessa a plataforma para procurar dados sobre eventos culturais. 
-Desta forma, é possível navegar pelas páginas voltadas à exibição de eventos, visto que elas não 
-A página principal conta com um banner exibindo eventos em destaque, e uma seleção de eventos relevantes separados por categoria.
+Desta forma, é possível navegar pelas páginas voltadas à exibição de eventos, visto que elas não requerem que o usuário faça login. % A página principal conta com um banner exibindo eventos em destaque, e uma seleção de eventos relevantes separados por categoria.
 A página agenda oferece uma exibição dos eventos ao longo de um dia ou de uma semana.
 Na agenda diária, os eventos são organizados pelo seu horário de início.
 Já na agenda semanal, os eventos são organizados pela sua data marcada, mas também pelo seu horário de início, dispondo-os em uma grade, assim tomando a forma de uma agenda. 
@@ -46,22 +45,22 @@ Um Evento que é aprovado por um Moderador se torna visível aos usuários, ao p
 
 O comportamento de cada um dos atores em relação à aplicação estão descrito na \autoref{fig:use-case-usuario} e \autoref{fig:use-case-moderador-organizador}, representados por meio de diagramas de caso de uso:
 
-\begin{figure}[H]
-    \centering
-    \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
-    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario.png}\\
-    \fonte{Elaborada pelo autor.}
-    \label{fig:use-case-usuario}
-\end{figure}
-
-% TODO 3.2 CONT
 % \begin{figure}[H]
 %     \centering
 %     \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
-%     \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario-homeless.png}\\
+%     \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario.png}\\
 %     \fonte{Elaborada pelo autor.}
 %     \label{fig:use-case-usuario}
 % \end{figure}
+
+% TODO 3.2 CONT
+\begin{figure}[H]
+    \centering
+    \caption[Caso de Uso - Usuário]{Caso de Uso - Usuário}
+    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario-homeless.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:use-case-usuario}
+\end{figure}
 
 \begin{figure}[H]
     \centering
