@@ -1,18 +1,18 @@
 \chapter{Resultados}
 \label{ch.resultados}
 
-Durante o ciclo de desenvolvimento deste trabalho, foi desenvolvido a aplicação descrita nas seções anteriores, que esta seção seção abordará.
+Durante o ciclo de desenvolvimento deste trabalho, foi desenvolvido a aplicação descrita nas seções anteriores, e que esta abordará.
 
 Conforme especificado, a aplicação é composta de duas partes, o \emph{Backend}, que age como o Servidor, e o \emph{Frontend}, que age como o Cliente. 
-Em um cenário normal, um servidor executa a porção \emph{Backend} da aplicação, e serve o \emph{Frontend} ao usuário, que o executa em seu dispositivo.
+Em um cenário usual, um servidor executa a porção \emph{Backend} da aplicação e serve o \emph{Frontend} ao usuário, que o executa em seu dispositivo.
 Utilizando um navegador web, é possível acessar a aplicação desta maneira.
 
 % TODO IBAGENS
 % TODO TAMBEM: AFERIR EXISTENCIA DA HOMEPAGE
-A página principal, exibida na \autoref{fig:agenda-diaria-terca}, é a primeira página que um novo usuário vê, por padrão. 
-É possível identificar um cabecalho na página, que contém alguns \emph{links} para navegação, e uma barra de pesquisa.
-Ao buscar utilizando a barra de pesquisa, a aplicação navega à página de busca de evento, e realiaza uma busca usando o texto inserido.
-Note também que, ao realizar login, os \emph{links} para as páginas de login e cadastro são substitídos por elementos relacionados ao usuário, como um botão para realizar logout, um \emph{link} para a página de perfil, e um \emph{link} para a página de criar evento, no caso de um usuário Organizador.
+A página principal, exibida na \autoref{fig:agenda-diaria-terca}, é a primeira que um novo usuário vê, por padrão. 
+É possível identificar um cabeçalho na página, também presente nas demais páginas, que contém alguns \emph{links} para navegação e uma barra de pesquisa.
+Ao buscar por meio da barra de pesquisa, a aplicação navega à página de busca de evento, e realiaza uma busca usando o texto inserido.
+Note também que, ao realizar login, os \emph{links} para as páginas de login e cadastro são substituídos por elementos relacionados ao usuário, como um botão para realizar logout, um \emph{link} para a página de perfil, e um \emph{link} para a página de criar evento, no caso de um usuário Organizador.
 
 \begin{figure}[H]
     \centering
@@ -24,12 +24,11 @@ Note também que, ao realizar login, os \emph{links} para as páginas de login e
 
 % TEXTO HOMEPAGE
 
-A página agenda é composta de dois modos diferentes: agenda diária e agenda semanal. 
-A agenda diária é o modo inicial desta página, mas é possivel alterná-los por meio de botões.
+A página agenda é composta de dois modos diferentes: agenda diária (modo inicial da página) e agenda semanal. 
+É possível alternar entre eles por meio de botões.
 
-No modo de agenda diária, exemplificado na \autoref{fig:agenda-diaria-sabado}, é apresentado a data atual e uma grade, contendo todos os eventos que acontecem neste dia, organizados por sua hora de início. 
-Nesta grade, são disposto ao longo de 24 colunas, correspondentes as 24 horas do dia.
-Se alguma coluna contém eventos demais, é exibido um botão, que leva para a página de busca de eventos, onde é realizado uma busca que mostra todos os eventos realizados naquele horário.
+No modo de agenda diária, exemplificado na \autoref{fig:agenda-diaria-sabado}, é apresentado a data corrente e uma grade, comportando todos os eventos que acontecem no dado dia, organizados por sua hora de início e dispostos ao longo de 24 colunas, correspondentes as 24 horas do dia.
+Se alguma coluna contém uma grande quantidade de eventos, é exibido um botão, que leva para a página de busca de eventos, onde é realizado uma busca por todos os eventos realizados naquele horário.
 
 \begin{figure}[H]
     \centering
@@ -39,10 +38,10 @@ Se alguma coluna contém eventos demais, é exibido um botão, que leva para a p
     \label{fig:agenda-diaria-sabado}
 \end{figure}
 
-Ao alternar para o modo de agenda semanal, como na \autoref{fig:agenda-semanal}, é apresentado uma outra grade, onde são apresentados todos os eventos que ocorrem na semana da data atual, e também o domingo da próxima semana, a fim de exibir todo o final de semana.
-Na grade da agenda semanal, cada coluna representa um dia da semana, e cada linha representa um horário.
+Ao alternar para o modo de agenda semanal, como na \autoref{fig:agenda-semanal}, apresenta-se uma outra grade, com todos os eventos que ocorrem na semana da data corrente, inclindo o domingo da próxima semana, a fim de exibir todo o final de semana.
+Nesta grade, cada coluna representa um dia da semana, e cada linha representa um horário.
 Então, cada evento é exibido em uma célula correspondente a sua data e horário.
-De maneira similar à agenda diária, uma célula que contém eventos demais exibe um botão, que leva para a página de busca de eventos, onde é realizado uma busca que mostra todos os eventos realizados naquela data e horário.
+Similarmente à agenda diária, uma célula que contém eventos demais exibe um botão que leva para a página de busca de eventos, onde é realizado uma busca que mostra todos os eventos realizados naquela data e horário.
 Adicionalmente, clicar na data de uma das colunas leva à agenda diária daquele dia. 
 
 \begin{figure}[H]
@@ -53,8 +52,8 @@ Adicionalmente, clicar na data de uma das colunas leva à agenda diária daquele
     \label{fig:agenda-semanal}
 \end{figure}
 
-Clicar nos eventos apresentados nesta página dirige o usuário à página daquele evento. 
-Há também duas caixas de seleção, onde é possível filtrar os eventos exibidos nesta página por suas categorias ou regiões, conforme demonstrado na \autoref{fig:agenda-semanal-filtros}. 
+Clicar nos eventos apresentados na página de agenda dirige o usuário à página daquele evento. 
+Há também duas caixas de seleção, que permitem filtrar os eventos exibidos nesta página por suas categorias ou regiões, conforme demonstrado na \autoref{fig:agenda-semanal-filtros}. 
 Este filtro tem efeito em ambos os modos.
 
 \begin{figure}[H]
@@ -66,8 +65,8 @@ Este filtro tem efeito em ambos os modos.
 \end{figure}
 
 A página de buscas, exibida na \autoref{fig:busca}, permite buscar diretamente por eventos, passados e futuros, utilizando diversos filtros.
-Além de navegar diretamente para esta página, é possível acessar ela por meio da barra de pesquisa, no cabecalho da aplicação, e também pela página de agenda.
-Navegar para esta página desta maneira faz com que ela realize uma operação de busca com os parâmetros configurados pela página de onde se foi navegado.
+Além de navegar diretamente para esta página, é possível acessá-la tanto por meio da barra de pesquisa, no cabecalho da aplicação, quanto pela página de agenda.
+Navegar para esta página por estes meios alternativos faz com que ela realize uma operação de busca com os parâmetros configurados pela pelo mecanismo que navegou para esta página.
 
 \begin{figure}[H]
     \centering
@@ -77,11 +76,11 @@ Navegar para esta página desta maneira faz com que ela realize uma operação d
     \label{fig:busca}
 \end{figure}
 
-Na coluna esquerda desta página, estão localizados diversos filtros: busca por texto (referente ao título e à descrição de um evento), por categoria, por região, por data, e por horário.
-É possível observar alguns na \autoref{fig:busca-filtros}.
-Vale notar que os filtros de horário se referem apenas ao horário do evento, e não a sua data. 
+Na coluna esquerda desta página, localizam-se diversos filtros para busca: por texto (referente ao título e à descrição de um evento), por categoria, por região, por data, e por horário.
+É possível observá-los sendo utilizados na \autoref{fig:busca-filtros}.
+Cabe mencionar que os filtros de horário concernem apenas ao horário do evento, e não a sua data. 
 Da mesma forma, os filtros de data não levam em consideração o horário de um evento.
-Este comportamento é deliberado, para possibilitar a filtragem de acordo com uma intervalo de horários e um intervalo de dias simultaneamente, ao invés de um grande intervalo de um momento até outro.
+Este comportamento é deliberado, para habilitar a filtragem de acordo com um intervalo de horários e um intervalo de dias simultaneamente, ao invés de um grande intervalo de um momento até outro.
 
 \begin{figure}[H]
     \centering
@@ -91,7 +90,7 @@ Este comportamento é deliberado, para possibilitar a filtragem de acordo com um
     \label{fig:busca-filtros}
 \end{figure}
 
-Realizar uma busca nesta página exibe uma lista de resultados, eventos cujas características se enquadram nos parâmetros informados pelo usuário, conforme a figura \autoref{fig:busca-realizada}.
+Realizar uma busca nesta página exibe uma lista de eventos cujas características se enquadram nos parâmetros informados pelo usuário, conforme a figura \autoref{fig:busca-realizada}.
 Clicar em qualquer evento navega para a página de evento, onde são exibidas informações referentes a ele.
 
 \begin{figure}[H]
@@ -102,9 +101,9 @@ Clicar em qualquer evento navega para a página de evento, onde são exibidas in
     \label{fig:busca-realizada}
 \end{figure}
 
-A página de evento, que é acessada por meio de divesas outras páginas da aplicação, exibe as informações de um determinado evento, tal qual exemplificado na \autoref{fig:evento}.
-Além do nome do evento, são exibidos sua descrição, categoria, uma imagem ilustrativa, um \emph{link} para mais informações, a data e horário de início e de término do evento, sua região, e seu endereço.
-Também são exibidas as atualizações deste evento, pequenos textos anexados ao evento, que descrevem eventuais atualizações sobre o evento (como, por exmeplo, um comunicado de troca de local).
+A página de evento, acessível por meio de diversas outras páginas da aplicação, exibe as informações de um determinado evento, tal qual exemplificado na \autoref{fig:evento}.
+Junto ao nome do evento, são exibidos sua descrição, categoria, uma imagem ilustrativa e um \emph{link} para informações adicionais, ao lado da data e horário de início e de término do evento, sua região, e seu endereço.
+Também são exibidas as atualizações do dado evento, em forma de pequenos textos anexados ao evento descrevendo eventuais atualizações sobre o evento (como, por exemplo, um comunicado de troca de local).
 É possível compartilhar o URL da página, direto do navegador, uma vez que a identificação do evento está presente nele. 
 
 \begin{figure}[H]
@@ -115,12 +114,13 @@ Também são exibidas as atualizações deste evento, pequenos textos anexados a
     \label{fig:evento}
 \end{figure}
 
-A última página acessível sem precisar realizar um login é justamente a página de login e cadastro.
-Ambos os mecanismos de login e cadatro estão presentes nesta página, simultaneamente, a fim de evitar situações onde o usuário tenta acessar o cadastro e acaba acessando o login, ou vice-versa.
-Ainda assim, a página evidencia o componente de login ou cadastro, dependendo de qual \emph{link} foi clicado.
+A última página acessível sem a necessidade realizar um login é justamente a página de login e cadastro.
+Ambos os mecanismos de login e cadastro estão presentes nesta página, simultaneamente, a fim de evitar situações onde o usuário tenta acessar o cadastro e acaba acessando o login, ou vice-versa.
+Ainda assim, a página evidencia o componente de login ou cadastro, a depender de qual \emph{link} foi clicado.
 
-O componente de cadastro, mostrado na \autoref{fig:cadastro-pessoa}, contém um formulário, com os campos nome, email, e senha, e enviá-lo efetua a criação de um novo usuário, do tipo Pessoa, no sistema. Também existe um botão que indica um modo de cadastro como Organizador. 
-Clicá-lo faz com que enviar este formulário apresente um novo campo para um CPF ou CNPJ (evidenciado na \autoref{fig:cadastro-organizador}), e enviá-lo cria um novo usuário do tipo Organizador, ao invés de Pessoa.
+O componente de cadastro, mostrado na \autoref{fig:cadastro-pessoa}, contém um formulário, com os campos nome, email, e senha, e enviá-lo efetua a criação de um novo usuário no sistema, do tipo Pessoa. 
+Também existe um botão, que altera o modo de cadastro para Organizador. 
+Clicá-lo faz com este formulário apresente um novo campo para um CPF ou CNPJ (evidenciado na \autoref{fig:cadastro-organizador}), e enviá-lo cria um novo usuário do tipo Organizador, ao invés de Pessoa.
 
 \begin{figure}[H]
     \centering
@@ -138,7 +138,7 @@ Clicá-lo faz com que enviar este formulário apresente um novo campo para um CP
     \label{fig:cadastro-organizador}
 \end{figure}
 
-O componente de login, exibido na \autoref{fig:login}, presente na mesma página, permite realizar a operação de autenticação.
+O componente de login, exibido na \autoref{fig:login}, e presente na mesma página, permite realizar a operação de autenticação.
 Enviar este formulário com um e-mail e senha válidos tem como resposta os dados do usuário referente, bem como um \emph{Token}, para que se autenticar ao acessar funcionalidades restritas.
 Uma vez realizado o login, é possível acessar novas páginas, que requerem que o usuário esteja autenticado.
 O conjunto de páginas disponibilizado para cada usuário varia de acordo com o seu tipo.
@@ -151,9 +151,9 @@ O conjunto de páginas disponibilizado para cada usuário varia de acordo com o 
     \label{fig:login}
 \end{figure}
 
-A página de perfil está disponível para todos os usuários autenticados, porém se comporta de maneira ligeiramente diferente, dependendo do tipo de usuário que a está acessando.
+A página de perfil está disponível para todos os usuários autenticados, porém se comporta de maneira ligeiramente diferente, a depender do tipo de usuário que a acessa.
 Todos os usuários podem acessar a página e conferir dados do seu perfil.
-Na \autoref{fig:perfil-pessoa}, se observa o perfil para um usuário do tipo Pessoa.
+Na \autoref{fig:perfil-pessoa}, se observa o perfil na visão de um usuário do tipo Pessoa.
 
 \begin{figure}[H]
     \centering
@@ -163,10 +163,10 @@ Na \autoref{fig:perfil-pessoa}, se observa o perfil para um usuário do tipo Pes
     \label{fig:perfil-pessoa}
 \end{figure}
 
-Acessar a página de perfil como um Organizador, além de exibir os dados do usuário, exibe também uma lista, de todos os eventos criados por este Organizador.
+Já na visão de um usuário do tipo Organizador, a página de perfil exibe uma lista, de todos os eventos criados por este Organizador, além dos dados do usuário.
 A \autoref{fig:perfil-organizador} mostra como esta página fica para um usuário deste tipo.
 Para cada evento, são exibidas suas informações básicas, o seu status, e botões, que permitem editar e exclui-lo.
-É possível ainda filtrar essa lista, pelo status dos eventos, para facilitar a visualização.
+É possível ainda filtrar essa lista por status, para facilitar a visualização.
 
 \begin{figure}[H]
     \centering
@@ -177,7 +177,7 @@ Para cada evento, são exibidas suas informações básicas, o seu status, e bot
 \end{figure}
 
 A página de edição de eventos, representada na \autoref{fig:atualizacao-edicao}, que permite editar ou atualizar um determinado evento, é acessível somente ao Organizador responsável pelo evento.
-Esta página é dividida em dois componentes, um para adicionar atualizações ao evento, e outro para realizar uma edição no evento.
+Esta página é dividida em dois componentes: um para adicionar atualizações ao evento, e outro para realizar edições no evento.
 Eles estão agrupados nesta página porque ambos se referem a operações semelhantes: alterar o estado do evento.
 
 \begin{figure}[H]
@@ -188,8 +188,8 @@ Eles estão agrupados nesta página porque ambos se referem a operações semelh
     \label{fig:atualizacao-edicao}
 \end{figure}
 
-O Componente de atualização de evento possui um formulário que, ao preenche-lo com um título e uma descrição, e envia-lo, adiciona uma atualização ao evento referente, conforme exemplificado na \autoref{fig:atualizacao-preenchido}.
-É possível ver esta atualização na página deste evento.
+O componente de atualização de evento possui um formulário que, preenchido com um título e uma descrição e envido, adiciona uma atualização ao evento referente, conforme exemplificado na \autoref{fig:atualizacao-preenchido}.
+É possível visualizar tal atualização na página do evento.
 
 \begin{figure}[H]
     \centering
@@ -199,12 +199,12 @@ O Componente de atualização de evento possui um formulário que, ao preenche-l
     \label{fig:atualizacao-preenchido}
 \end{figure}
 
-O Componente de edição, também presente nesta página, possui um formulário, com campos de descrição, link de mais informações, imagem, data e hora de início e fim, região, e endereço, todos referentes à atributos do evento. 
+O componente de edição, também presente nesta página, possui um formulário, com campos de descrição, link de informações adicionais, imagem, data e hora de início e fim, região e endereço, todos referentes à atributos do evento. 
 Durante o carregamento da página, estes campos são preenchidos com os dados originais deste evento.
-Alterar algum campo deste formulário o marca com um tom de destaque, simbolizando que já nao reflete mais o valor original do evento.
-O envio de dados deste formulário é constituido apenas pelos campos que foram alterados pelo usuário.
-A \autoref{fig:edicao-preenchido} ilustra um exemplo de uso deste componente.
-Vale notar que editar um evento o coloca de volta no estado de análise, e precisando que um Moderador o analise novamente e atualize seu status de acordo. 
+
+A \autoref{fig:edicao-preenchido} ilustra um exemplo de uso deste componente:
+Alterar algum campo deste formulário o marca com um tom de destaque, simbolizando que já nao reflete mais o valor original.
+Os dados enviados por este formulário são constituídos apenas pelos campos que foram alterados pelo usuário, e vale notar que editar um evento define seu status como "em análise", sendo necessária uma nova análise de um Moderador para alterar seu status. 
 
 \begin{figure}[H]
     \centering
@@ -214,9 +214,8 @@ Vale notar que editar um evento o coloca de volta no estado de análise, e preci
     \label{fig:edicao-preenchido}
 \end{figure}
 
-Já a página de exclusão de eventos, representada na \autoref{fig:exclusao-evento}, contém apenas alguns botões: voltar, editar e excluir, que realizam ações sob um determinado evento. 
-Esta página também só é acessível ao Organizador deste evento.
-O botão de voltar direciona o usuário de volta à página de perfil, e o botão de editar o direcona à página de edição deste mesmo evento.
+A página de exclusão de eventos, representada na \autoref{fig:exclusao-evento}, também só é acessível ao Organizador deste evento, e contém apenas alguns botões: voltar, editar e excluir, que realizam ações sob um determinado evento. 
+O botão de voltar direciona o usuário de volta à página de perfil, e o botão de editar o direcona à página de edição deste evento.
 O botão de excluir, por sua vez, elimina este evento da aplicação, tornando-o inacessível.
 
 \begin{figure}[H]
@@ -227,9 +226,9 @@ O botão de excluir, por sua vez, elimina este evento da aplicação, tornando-o
     \label{fig:exclusao-evento}
 \end{figure}
 
-Por fim, a última nova págin a disponível a um Organizador é a de novo evento, exibida na \autoref{fig:novo-evento}. 
-Ela contém um formulário que coleta todas as informações necessárias para criar um novo evento, que são um nome, uma descrição, uma imagem ilustrativa, sua categoria, um link para mais informações, uma data e horário para início e término, o endereço e a região onde é realizado.
-Ao preencher todos os dados de maneira válida e enviar o formulário, um novo evento é criado, mas não é imediatamente acessível: a princípio, possui um status de em análise, e um moderador deve analisar e aprová-lo para que possa aparecer na aplicação normalmente.
+Por fim, a última nova página a disponível a um Organizador é a de novo evento, exibida na \autoref{fig:novo-evento}. 
+Ela é constituída de um formulário que coleta todos os dados necessários para a criação de um novo evento: seu nome nome, descrição, uma imagem ilustrativa, categoria, um link para informações adicionais, data e horário de início e término, região e endereço onde será realizado.
+Ao preencher todos os campos de maneira válida e enviar o formulário, um novo evento é criado, mas não é imediatamente acessível: a princípio, possui um status de "em análise", e um Moderador deve analisá-lo e aprová-lo para que possa aparecer na aplicação normalmente.
 Todo evento, ao ser criado, tem a ele um Moderador designado automaticamente.
 
 \begin{figure}[H]
@@ -242,7 +241,7 @@ Todo evento, ao ser criado, tem a ele um Moderador designado automaticamente.
 
 Ao fazer login como Moderador, é possível acessar a página de perfil e conferir que, além dos dados de usuário, é também exibida uma lista de eventos, conforme demonstrado na \autoref{fig:perfil-moderador}.
 Os eventos desta lista são aqueles que tem este usuário como Moderador designado.
-Nesta lista, além de informações básicas de cada evento, está seu status, e um botão, que permite realizar a análise do evento, caso o mesmo tenha o status em análise.
+Nesta lista, além de informações básicas de cada evento, está seu status, e um botão para o ato de análise do evento, caso o mesmo tenha o status "em análise".
 
 \begin{figure}[H]
     \centering
@@ -252,11 +251,11 @@ Nesta lista, além de informações básicas de cada evento, está seu status, e
     \label{fig:perfil-moderador}
 \end{figure}
 
-A página de análise de eventos é acessível ao Moderador designado de um determinado evento, por meio de seu perfil.
-Nesta página, são exibidos todos os dados de um evento que está em análise, semelhante à página de eventos, de maneira que o Moderador possa o analisar.
-Ao fim da página, há dois botões, que alteram o status deste evento para aprovado ou reprovado, além de um terceiro botão que leva de volta ao perfil, tal qual mostrado na \autoref{fig:analise-evento}.
-Aprovar um evento significa que agora ele estará visível para todos os usuários da aplicação, enquanto reprovar um evento faz com que ele não fique disponível a outros usuários, exceto ao Organizador, que pode editá-lo para que o evento entre em análise novamente.
-O julgamento do status de um evento, realizado pelo moderador, deve ser realizado de acordo com os termos de uso da plataforma.
+A página de análise de eventos é acessível ao Moderador designado a um determinado evento, por meio de seu perfil.
+Nela, visualiza-se todos os dados de um evento em análise, semelhante à página de eventos, de maneira que o Moderador possa analisá-lo.
+Ao fim da página, há dois botões, que alteram o status deste evento para "aprovado" ou "reprovado", além de um terceiro botão que retorna ao perfil, tal qual mostrado na \autoref{fig:analise-evento}.
+Aprovar um evento significa torná-lo visível para todos os usuários da aplicação, enquanto reprovar um evento faz com que ele não fique disponível a outros usuários, exceto ao Organizador — que pode editá-lo para que o evento entre em análise novamente.
+O julgamento do status de um evento, realizado pelo Moderador, deve ser realizado de acordo com os termos de uso da plataforma.
 
 \begin{figure}[H]
     \centering
@@ -266,8 +265,8 @@ O julgamento do status de um evento, realizado pelo moderador, deve ser realizad
     \label{fig:analise-evento}
 \end{figure}
 
-Finalmente, existe uma página para qualquer URL não previsto pela aplicação, exibido na \autoref{fig:notfound}.
-Esta página também é exibida quando se tenta acessar um evento que não pode ser encontrado, ou quando se tenta acessar uma página restrita, exemplificado na \autoref{fig:notauth}.
+Finalmente, existe uma página para qualquer URL não previsto pela aplicação, como se nota na \autoref{fig:notfound}.
+Esta página também é exibida após uma tentativa de acessar um evento que não pode ser encontrado, ou quando uma página restrita, exemplificado na \autoref{fig:notauth}.
 
 \begin{figure}[H]
     \centering
