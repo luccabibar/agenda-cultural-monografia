@@ -290,15 +290,15 @@
 
 % Folha de rosto
 % (o * indica que haverá a ficha bibliográfica)
-% \imprimirfolhaderosto*
-\imprimirfolhaderosto
+\imprimirfolhaderosto*
+% \imprimirfolhaderosto
 
 % TODO: ficha bibliografica
 
 % Inserir a ficha bibliografica: https://www.biblioteca.unesp.br/ficha/
-% \begin{fichacatalografica}
-%     \includepdf[pages=1, scale=1.0, frame=false]{ficha_catalografica.pdf}
-% \end{fichacatalografica}
+\begin{fichacatalografica}
+    \includepdf[pages=1, scale=1.0, frame=false]{ficha_catalografica.pdf}
+\end{fichacatalografica}
 
 % TODO: folha de aprovacao
 
@@ -512,8 +512,6 @@
 % \nocite{cliente-servidor}
 % \nocite{http}
 % \nocite{rest}
-\nocite{github-cliente}
-\nocite{github-servidor}
 
 \bibliography{referencias}
 
