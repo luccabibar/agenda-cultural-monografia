@@ -12,7 +12,7 @@ Note que o Tipo Evento inclui uma lista de atualizações, denominada Atualizaca
 \begin{figure}[H]
     \centering
     \caption[Tipo Evento]{Tipo Evento}
-    \includegraphics[width = 0.6\linewidth]{figs/diagramas/diagrama-classe-evento.png}\\
+    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-classe-evento.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:classe-evento}
 \end{figure}
@@ -58,7 +58,7 @@ O comportamento de cada um dos atores em relação à aplicação estão descrit
 \begin{figure}[H]
     \centering
     \caption[Diagrama de Caso de Uso - Usuário]{Diagrama de Caso de Uso - Usuário}
-    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-usuario-homeless.png}\\
+    \includegraphics[width = 0.9\linewidth]{figs/diagramas/diagrama-casouso-usuario-homeless.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:use-case-usuario}
 \end{figure}
@@ -67,7 +67,7 @@ O comportamento de cada um dos atores em relação à aplicação estão descrit
 \begin{figure}[H]
     \centering
     \caption[Diagrama de Caso de Uso - Organizador e Moderador]{Diagrama de Caso de Uso - Organizador e Moderador}
-    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-casouso-orgmod.png}\\
+    \includegraphics[width = 0.9\linewidth]{figs/diagramas/diagrama-casouso-orgmod.png}\\
     \fonte{Elaborada pelo autor.}
     \label{fig:use-case-moderador-organizador}
 \end{figure}
@@ -86,7 +86,7 @@ Também é possível definir um diagrama de classes, que representa como estes d
 Vale notar que algumas das entidades neste diagrama se referem à outros aspectos da aplicação além dos descritos nesta seção. 
 Por exemplo, as classes \emph{JWTUser} e \emph{UsuarioAutenticado}, bem como seus relacionamentos com \emph{UsuarioAutenticado}, tomam esta forma em razão da estratégia de autenticação de usuário adotada pela plataforma. 
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \caption[Diagrama de Classe]{Diagrama de Classe}
     \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-classe.png}\\
@@ -94,7 +94,17 @@ Por exemplo, as classes \emph{JWTUser} e \emph{UsuarioAutenticado}, bem como seu
     \label{fig:diagrama-classe}
 \end{figure}
 
-De maneira sucinta, é possível dividir a plataforma nas seguintes telas principais, referentes aos seguintes atores:
+Uma vez definido a estrutura da aplicação, bem como as tecnologias utilizadas em sua implementação, é possível representar a arquitetura do sistema como um todo, como na \autoref{fig:diagrama-arquitetura}.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama representando a arquitetura do sistema]{Diagrama representando a arquitetura do sistema}
+    \includegraphics[width = 0.7\linewidth]{figs/diagramas/diagrama-arquitetura.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-arquitetura}
+\end{figure}
+
+De maneira sucinta, a plataforma se divide nas seguintes telas principais, referentes aos seguintes atores:
 
 % \begin{center}
 %     \begin{tabular}{|c|c|c|}

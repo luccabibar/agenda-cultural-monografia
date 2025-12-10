@@ -7,8 +7,16 @@ Neste capítulo são abordados as ferramentas, tecnologias e conceitos empregado
 \label{sec.cliente-servidor}
 
 De acordo com \citeonline{cliente-servidor}, a arquitetura Cliente-Servidor é um modelo computacional que facilita a comunicação entre múltiplos clientes e um único servidor. 
-Nesta configuração, diversos clientes, sejam computadores, smartphones, etc., se conectam através de uma rede (normalmente, a internet), para acessar os recursos providos por aquele servidor.
+Nesta configuração, diversos clientes, sejam computadores, smartphones, etc., se conectam através de uma rede (normalmente, a internet), para acessar os recursos providos por aquele servidor, como representado na \autoref{fig:diagrama-cliente-servidor}.
 A dinâmica entre as duas partes são de requisição-resposta, ou seja, conforme Clientes enviam requisições, o Servidor provê repostas, de acordo com o que foi especificado por cada Cliente.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama representando arquitetura Cliente-Servidor]{Diagrama representando arquitetura Cliente-Servidor}
+    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-cliente-servidor.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-cliente-servidor}
+\end{figure}
 
 Esta arquitetura é vantajosa pois os componentes Cliente e Servidor estão desacoplados, permitindo que sejam desenvolvidos em paralelo, com dependências reduzidas. 
 Adicionalmente, ela permite que diversos Clientes diferentes se comuniquem com o mesmo Servidor, flexibilizando a natureza do Cliente, que pode tomar as mais diversas formas.
@@ -30,7 +38,15 @@ Ao contrario de outros estilos, como SOAP, onde uma determinada ação é inform
 Por fim, uma API Rest tem sempre apenas um estado, ou seja, a aplicação nao armazena nenhum tipo de dado de sessão, e toda requisição deve conter todos os dados necessários para seu processamento.
 
 Então, uma API estilo REST é um meio de comunicação entre duas partes, respeitando um conjunto de regras específico.
-Um contexto muito popular para este tipo de API é no desenvolvimento de aplicações que devem se comunicar via rede, como por exemplo, na arquitetura Cliente-Servidor
+Um contexto muito popular para este tipo de API é no desenvolvimento de aplicações que devem se comunicar via rede, como na arquitetura Cliente-Servidor, exemplificado na \autoref{fig:diagrama-api}.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama representando API estilo REST]{Diagrama representando API estilo REST}
+    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-api.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-api}
+\end{figure}
 
 \section{JSON Web Tokens}
 \label{sec.jwt}
@@ -41,8 +57,17 @@ Cada token é digitalmente assinado, o que garante que os dados possam transitar
 Uma aplicação usual de JWTs é para o fim de autenticação de usuários.
 Quando um usuário faz login em um sistema, lhe é retornado um JWT, que age como sua credencial para acesso ao sistema.
 Então, o usuário informa o JWT ao sistema ao acessar recursos restritos, assim confirmando a sua identidade.
-Terceiros interessados em acessar indevidamente o sistema não o conseguirão, uma vez que não tem meios de decodificar o JWT nem tampouco criar uma réplica.
+A \autoref{fig:diagrama-autenticacao} ilustra esta aplicação, no contexto de um sistema Cliente-Servidor.
 Note que o usuário em nenhum momento precisa se preocupar com o conteúdo do Token, uma vez que ele age apenas como uma chave de autenticação para ele.
+Terceiros interessados em acessar indevidamente o sistema não o conseguirão, uma vez que não tem meios de decodificar o JWT nem tampouco criar uma réplica.
+
+\begin{figure}[H]
+    \centering
+    \caption[Diagrama representando uso de JWT para Autenticação]{Diagrama representando uso de JWT para Autenticação}
+    \includegraphics[width = 1.0\linewidth]{figs/diagramas/diagrama-autenticacao.png}\\
+    \fonte{Elaborada pelo autor.}
+    \label{fig:diagrama-autenticacao}
+\end{figure}
 
 \section{Banco de dados PostgreSQL}
 \label{sec.pgsql}
